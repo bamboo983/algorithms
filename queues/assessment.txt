@@ -8,20 +8,20 @@ Findbugs:     No potential bugs found.
 API:          PASSED
 
 Correctness:  37/37 tests passed
-Memory:       53/53 tests passed
+Memory:       54/53 tests passed
 Timing:       62/62 tests passed
 
-Aggregate score: 100.00% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
+Aggregate score: 100.19% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
 
 Assessment Details
 
 The following files were submitted:
 ----------------------------------
 total 16K
--rw-r--r-- 1 3.0K Nov 10 08:02 Deque.java
--rw-r--r-- 1 2.6K Nov 10 08:02 RandomizedQueue.java
--rw-r--r-- 1  395 Nov 10 08:02 Subset.java
--rw-r--r-- 1 2.3K Nov 10 08:02 studentSubmission.zip
+-rw-r--r-- 1 3.0K Nov 10 09:31 Deque.java
+-rw-r--r-- 1 2.6K Nov 10 09:31 RandomizedQueue.java
+-rw-r--r-- 1  532 Nov 10 09:31 Subset.java
+-rw-r--r-- 1 2.3K Nov 10 09:31 studentSubmission.zip
 
 
 ********************************************************************************
@@ -298,19 +298,19 @@ Test 13: Check randomness of sample() by enqueueing strings, repeatedly calling
 
 Test 14: Check randomness of dequeue() by enqueueing items, repeatedly calling
          dequeue() until a specific enqueued string appears.
-  *  Enqueue strings A to C and call dequeue() until C is dequeued; repeat 3000 times
-  *  Enqueue strings A to E and call dequeue() until B is dequeued; repeat 5000 times
-  *  Enqueue strings A to H and call dequeue() until G is dequeued; repeat 8000 times
-  *  Enqueue strings A to J and call dequeue() until B is dequeued; repeat 10000 times
+  *  Enqueue strings A to C and call dequeue() until B is dequeued; repeat 3000 times
+  *  Enqueue strings A to E and call dequeue() until C is dequeued; repeat 5000 times
+  *  Enqueue strings A to H and call dequeue() until F is dequeued; repeat 8000 times
+  *  Enqueue strings A to J and call dequeue() until H is dequeued; repeat 10000 times
 ==> passed
 
 Test 15: Check randomness of iterator() by enqueueing strings, getting an iterator()
          and repeatedly calling next() until a specific enqueued string appears.
-  *  Enqueue strings A to C, create iterator(), and call next() until B is returned;
+  *  Enqueue strings A to C, create iterator(), and call next() until C is returned;
      Repeat 3000 times
   *  Enqueue strings A to E, create iterator(), and call next() until D is returned;
      Repeat 5000 times
-  *  Enqueue strings A to H, create iterator(), and call next() until B is returned;
+  *  Enqueue strings A to H, create iterator(), and call next() until H is returned;
      Repeat 8000 times
   *  Enqueue strings A to J, create iterator(), and call next() until E is returned;
      Repeat 10000 times
@@ -346,26 +346,26 @@ Test 1: assignment inputs
 
 % echo "A B C D E F G H I" | java Subset 3
 [student solution]
-I
-C
-E
+A
+B
+H
 
 % echo "A B C D E F G H I" | java Subset 3
 [student solution]
-G
-B
 D
+E
+A
 
 % echo "AA BB BB BB BB BB CC CC " | java Subset 8
 [student solution]
 BB
-CC
 AA
 BB
 BB
-BB
 CC
 BB
+BB
+CC
 
 ==> passed
 
@@ -373,92 +373,92 @@ Test 2: various inputs
 
 % echo "A B C D E F G H I" | java Subset 1
 [student solution]
+E
+
+% echo "A B C D E F G H I" | java Subset 5
+[student solution]
+H
+C
+A
+B
 G
 
 % echo "A B C D E F G H I" | java Subset 5
 [student solution]
-B
+E
 F
 A
-I
-E
-
-% echo "A B C D E F G H I" | java Subset 5
-[student solution]
-I
+C
 G
-E
-B
-F
 
 % echo "A B C D E F G H I" | java Subset 9
 [student solution]
-E
 G
-C
 F
-D
+I
+E
 H
 A
 B
-I
+D
+C
 
 % echo "A B C D E F G H I" | java Subset 0
 [student solution]
 
 % echo "it was the best of times it was the worst of times" | java Subset 10
 [student solution]
-the
-was
-of
 times
-of
 times
-worst
-the
 was
 it
+the
+the
+best
+it
+was
+of
 
 % echo "It was the best of times, it was the worst of times, it was ..." | java Subset 10
 [student solution]
-cannon,
-ten
-medium
-"Oh,
-them),
-history,
-Jacques?"
-as
+having
+woman,
+her
+barrier
+pressed,
+a
+look
+"See
 the
-those
+him
 
 % echo "It was the best of times, it was the worst of times, it was ..." | java Subset 20
 [student solution]
-will
-It
+her
+note
+He
+hair,
+for
+hand
+supported
+figures
+forlorn
+My
+the
+did,
+that
+Marquis
+hold
+best
 his
-the
-The
-with
-the
-spy
-there
-accord.
-it
-gaoler,
-with
-I
-softened
-the
-slapping
-many
-while
-when
+through
+been
+nervously
 
 % echo "AA BB BB BB BB BB CC CC " | java Subset 7
 [student solution]
-CC
 BB
+CC
 CC
 BB
 AA
@@ -514,18 +514,13 @@ Test 2: Check that the maximum size of any Deque or RandomizedQueue object
 Test 3 (bonus): Check that maximum size of any or Deque or RandomizedQueue object
                 created is equal to k
   * filename = tale.txt, N = 138653, k = 5
-    - max size of RandomizedQueue object = 138653
   * filename = tale.txt, N = 138653, k = 50
-    - max size of RandomizedQueue object = 138653
   * filename = tale.txt, N = 138653, k = 500
-    - max size of RandomizedQueue object = 138653
   * filename = tale.txt, N = 138653, k = 5000
-    - max size of RandomizedQueue object = 138653
   * filename = tale.txt, N = 138653, k = 50000
-    - max size of RandomizedQueue object = 138653
-==> FAILED
+==> passed
 
-Total: 2/2 tests passed!
+Total: 3/2 tests passed!
 
 ================================================================
 
@@ -791,9 +786,9 @@ Test 1a-1g:  N random calls to addFirst(), addLast(), removeFirst(),
 => passed       32768     0.01
 => passed       65536     0.01
 => passed      128000     0.02
-=> passed      256000     0.03
-=> passed      512000     0.03
-=> passed     1024000     0.04
+=> passed      256000     0.04
+=> passed      512000     0.05
+=> passed     1024000     0.05
 => passed     2048000     0.14
 ==> 12/12 tests passed
 
@@ -814,7 +809,7 @@ Test 2a-2g:  Create deque of N objects, then iterate over the N objects
 => passed      256000     0.00
 => passed      512000     0.01
 => passed     1024000     0.01
-=> passed     2048000     0.02
+=> passed     2048000     0.03
 ==> 12/12 tests passed
 
 
@@ -853,11 +848,11 @@ Test 1a-1g:  N random calls to enqueue(), sample(), dequeue(),
 => passed       16384     0.00
 => passed       32768     0.00
 => passed       65536     0.01
-=> passed      128000     0.01
+=> passed      128000     0.02
 => passed      256000     0.02
-=> passed      512000     0.05
+=> passed      512000     0.06
 => passed     1024000     0.11
-=> passed     2048000     0.19
+=> passed     2048000     0.20
 ==> 12/12 tests passed
 
 
@@ -874,7 +869,7 @@ Test 2a-2g:  Create randomized queue of N objects, then iterate
 => passed       32768     0.00
 => passed       65536     0.00
 => passed      128000     0.01
-=> passed      256000     0.01
+=> passed      256000     0.02
 => passed      512000     0.03
 => passed     1024000     0.07
 => passed     2048000     0.22
@@ -892,7 +887,7 @@ Test 3a-3g:  Create randomized queue of N objects, then interleave
 => passed       16385     0.00
 => passed       32767     0.00
 => passed       32768     0.00
-=> passed       32769     0.00
+=> passed       32769     0.01
 ==> 7/7 tests passed
 
 Total: 31/31 tests passed!
