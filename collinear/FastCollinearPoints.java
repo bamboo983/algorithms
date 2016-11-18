@@ -21,29 +21,31 @@ public class FastCollinearPoints {
 
         numberOfSegments = 0;
         segments = null;
-        List<LineSegment> segmentsList = new ArrayList<LineSegment>();
-        for (int i = 0; i < points.length; i++) {
-            Point[] sortPoints = points;
-            Arrays.sort(sortPoints, sortPoints[i].slopeOrder());
-            List<Point> pointsList = new ArrayList<Point>();
-            double slope = sortPoints[0].slopeTo(sortPoints[1]);
-            pointsList.add(sortPoints[0]);
-            pointsList.add(sortPoints[1]);
-            for (int j = 2; j < sortPoints.length; j++) {
-                double adjSlope = sortPoints[0].slopeTo(sortPoints[j]);
-                if (adjSlope == slope) {
-                    pointsList.add(sortPoints[j]);
-                } else {
-                    checkPointsToSegment(pointsList, segmentsList);
-                    pointsList.clear();
-                    pointsList.add(sortPoints[0]);
-                    pointsList.add(sortPoints[j]);
-                    slope = adjSlope;
+        if (points.length >= MINIMUM_SEGMENT_POINTS) {
+            List<LineSegment> segmentsList = new ArrayList<LineSegment>();
+            for (int i = 0; i < points.length; i++) {
+                Point[] sortPoints = points;
+                Arrays.sort(sortPoints, sortPoints[i].slopeOrder());
+                List<Point> pointsList = new ArrayList<Point>();
+                double slope = sortPoints[0].slopeTo(sortPoints[1]);
+                pointsList.add(sortPoints[0]);
+                pointsList.add(sortPoints[1]);
+                for (int j = 2; j < sortPoints.length; j++) {
+                    double adjSlope = sortPoints[0].slopeTo(sortPoints[j]);
+                    if (adjSlope == slope) {
+                        pointsList.add(sortPoints[j]);
+                    } else {
+                        checkPointsToSegment(pointsList, segmentsList);
+                        pointsList.clear();
+                        pointsList.add(sortPoints[0]);
+                        pointsList.add(sortPoints[j]);
+                        slope = adjSlope;
+                    }
                 }
+                checkPointsToSegment(pointsList, segmentsList);
             }
-            checkPointsToSegment(pointsList, segmentsList);
+            segments = segmentsList.toArray(new LineSegment[0]);
         }
-        segments = segmentsList.toArray(new LineSegment[0]);
     }
 
     // the number of line segments
