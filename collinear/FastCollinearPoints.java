@@ -34,17 +34,14 @@ public class FastCollinearPoints {
                 if (adjSlope == slope) {
                     pointsList.add(sortPoints[j]);
                 } else {
-                    if (pointsList.size() >= MINIMUM_SEGMENT_POINTS) {
-                        LineSegment segment = getSegment(pointsList.toArray(new Point[0]));
-                        if (!checkSegments(segmentsList, segment))
-                            segmentsList.add(segment);
-                    }
+                    checkPointsToSegment(pointsList, segmentsList);
                     pointsList.clear();
                     pointsList.add(sortPoints[0]);
                     pointsList.add(sortPoints[j]);
                     slope = adjSlope;
                 }
             }
+            checkPointsToSegment(pointsList, segmentsList);
         }
         segments = segmentsList.toArray(new LineSegment[0]);
     }
@@ -100,6 +97,15 @@ public class FastCollinearPoints {
             if (s.toString().equals(segment.toString()))
                 return true;
         return false;
+    }
+
+    private void checkPointsToSegment(List<Point> pointsList,
+                                List<LineSegment> segmentsList) {
+        if (pointsList.size() >= MINIMUM_SEGMENT_POINTS) {
+            LineSegment segment = getSegment(pointsList.toArray(new Point[0]));
+            if (!checkSegments(segmentsList, segment))
+                segmentsList.add(segment);
+        }
     }
 
     private boolean checkDuplicatePoints(Point[] points) {
