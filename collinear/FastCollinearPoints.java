@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class FastCollinearPoints {
     private static final int MINIMUM_SEGMENT_POINTS = 4;
-    private int numberOfSegments;
     private LineSegment[] segments;
 
     // finds all line segments containing 4 or more points
@@ -19,8 +18,7 @@ public class FastCollinearPoints {
         if (checkDuplicatePoints(points))
             throw new IllegalArgumentException("the argument contains a repeated point");
 
-        numberOfSegments = 0;
-        segments = null;
+        segments = new LineSegment[0];
         if (points.length >= MINIMUM_SEGMENT_POINTS) {
             List<LineSegment> segmentsList = new ArrayList<LineSegment>();
             for (int i = 0; i < points.length; i++) {
@@ -50,12 +48,12 @@ public class FastCollinearPoints {
 
     // the number of line segments
     public int numberOfSegments() {
-        return numberOfSegments;
+        return segments.length;
     }
 
     // the line segments
     public LineSegment[] segments() {
-        return segments != null ? segments.clone() : null;
+        return segments.clone();
     }
 
     public static void main(String[] args) {

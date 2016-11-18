@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public class BruteCollinearPoints {
-    private int numberOfSegments;
     private LineSegment[] segments;
 
     // finds all line segments containing 4 points
@@ -18,8 +17,7 @@ public class BruteCollinearPoints {
         if (checkDuplicatePoints(points))
             throw new IllegalArgumentException("the argument contains a repeated point");
 
-        numberOfSegments = 0;
-        segments = null;
+        segments = new LineSegment[0];
         List<LineSegment> segmentsList = new ArrayList<LineSegment>();
         for (int i = 0; i < points.length - 3; i++)
             for (int j = i + 1; j < points.length - 2; j++)
@@ -29,7 +27,6 @@ public class BruteCollinearPoints {
                                 == points[i].slopeTo(points[k])
                                 && points[i].slopeTo(points[j])
                                 == points[i].slopeTo(points[l])) {
-                            numberOfSegments++;
                             Point[] segmentPoints = new Point[4];
                             segmentPoints[0] = points[i];
                             segmentPoints[1] = points[j];
@@ -42,12 +39,12 @@ public class BruteCollinearPoints {
 
     // the number of line segments
     public int numberOfSegments() {
-        return numberOfSegments;
+        return segments.length;
     }
 
     // the line segments
     public LineSegment[] segments() {
-        return segments != null ? segments.clone() : null;
+        return segments.clone();
     }
 
     public static void main(String[] args) {
