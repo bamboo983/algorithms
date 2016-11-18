@@ -105,7 +105,7 @@ public class FastCollinearPoints {
     private boolean checkDuplicatePoints(Point[] points) {
         for (int i = 0; i < points.length; i++)
             for (int j = i + 1; j < points.length; j++)
-                if (points[i].toString().equals(points[j].toString()))
+                if (points[i].slopeTo(points[j]) == Double.NEGATIVE_INFINITY)
                     return true;
         return false;
     }
