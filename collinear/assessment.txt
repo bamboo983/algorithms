@@ -1,0 +1,849 @@
+See the Assessment Guide for information on how to interpret this report.
+
+Assessment Summary
+
+Compilation:  PASSED
+Style:        PASSED
+Findbugs:     No potential bugs found.
+API:          PASSED
+
+Correctness:  22/41 tests passed
+Memory:       1/1 tests passed
+Timing:       10/41 tests passed
+
+Aggregate score: 50.98% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
+
+Assessment Details
+
+The following files were submitted:
+----------------------------------
+total 24K
+-rw-r--r-- 1 3.4K Nov 18 03:09 BruteCollinearPoints.java
+-rw-r--r-- 1 3.9K Nov 18 03:09 FastCollinearPoints.java
+-rw-r--r-- 1 4.1K Nov 18 03:09 Point.java
+-rw-r--r-- 1 4.3K Nov 18 03:09 studentSubmission.zip
+
+
+********************************************************************************
+*          COMPILING                                                           *
+********************************************************************************
+
+
+% javac Point.java
+*-----------------------------------------------------------
+
+================================================================
+
+% javac BruteCollinearPoints.java
+*-----------------------------------------------------------
+
+================================================================
+
+% javac FastCollinearPoints.java
+*-----------------------------------------------------------
+
+================================================================
+
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+
+================================================================
+
+
+% findbugs *.class
+*-----------------------------------------------------------
+
+================================================================
+
+
+Testing the APIs of your programs.
+*-----------------------------------------------------------
+Point:
+
+BruteCollinearPoints:
+
+FastCollinearPoints:
+
+================================================================
+
+
+******************************************************************************
+*          CORRECTNESS
+******************************************************************************
+
+Testing methods in Point
+*-----------------------------------------------------------
+Running 3 total tests.
+
+Test 1: p.slopeTo(q)
+  *  positive infinite slope, where p and q have coordinates in [0, 500)
+  *  positive infinite slope, where p and q have coordinates in [0, 32768)
+  *  negative infinite slope, where p and q have coordinates in [0, 500)
+  *  negative infinite slope, where p and q have coordinates in [0, 32768)
+  *  positive zero     slope, where p and q have coordinates in [0, 500)
+     Failed on trial 1 of 100000
+     p             = (65, 326)
+     q             = (173, 326)
+     p.slopeTo(q)  = -0.0
+  *  positive zero     slope, where p and q have coordinates in [0, 32768)
+     Failed on trial 2 of 100000
+     p             = (13395, 16752)
+     q             = (23524, 16752)
+     p.slopeTo(q)  = -0.0
+  *  symmetric  for random points p and q with coordinates in [0, 500)
+  *  symmetric  for random points p and q with coordinates in [0, 32768)
+  *  transitive for random points p, q, and r with coordinates in [0, 500)
+  *  transitive for random points p, q, and r with coordinates in [0, 32768)
+  *  slopeTo(), where p and q have coordinates in [0, 500)
+  *  slopeTo(), where p and q have coordinates in [0, 32768)
+  *  slopeTo(), where p and q have coordinates in [0, 10)
+  *  throw a java.lang.NullPointerException if argument is null
+==> FAILED
+
+Test 2: p.compareTo(q)
+  *  reflexive, where p and q have coordinates in [0, 500)
+  *  reflexive, where p and q have coordinates in [0, 32768)
+  *  antisymmetric, where p and q have coordinates in [0, 500)
+  *  antisymmetric, where p and q have coordinates in [0, 32768)
+  *  transitive, where p, q, and r have coordinates in [0, 500)
+  *  transitive, where p, q, and r have coordinates in [0, 32768)
+  *  sign of compareTo(), where p and q have coordinates in [0, 500)
+  *  sign of compareTo(), where p and q have coordinates in [0, 32768)
+  *  sign of compareTo(), where p and q have coordinates in [0, 10)
+  *  throw java.lang.NullPointerException exception if argument is null
+==> passed
+
+Test 3: p.slopeOrder().compare(q, r)
+  *  reflexive, where p and q have coordinates in [0, 500)
+  *  reflexive, where p and q have coordinates in [0, 32768)
+  *  antisymmetric, where p, q, and r have coordinates in [0, 500)
+  *  antisymmetric, where p, q, and r have coordinates in [0, 32768)
+  *  transitive, where p, q, r, and s have coordinates in [0, 500)
+  *  transitive, where p, q, r, and s have coordinates in [0, 32768)
+  *  sign of compare(), where p, q, and r have coordinates in [0, 500)
+  *  sign of compare(), where p, q, and r have coordinates in [0, 32768)
+  *  sign of compare(), where p, q, and r have coordinates in [0, 10)
+     Failed on trial 99 of 100000
+     p                         = (2, 8)
+     q                         = (0, 8)
+     r                         = (4, 8)
+     student   p.compare(q, r) = 1
+     reference p.compare(q, r) = 0
+     reference p.slopeTo(q)    = 0.0
+     reference p.slopeTo(r)    = 0.0
+  *  throw java.lang.NullPointerException if either argument is null
+==> FAILED
+
+
+Total: 1/3 tests passed!
+
+
+================================================================
+
+******************************************************************************
+*          correctness (using reference Point.java and LineSegment.java)
+******************************************************************************
+
+Testing methods in BruteCollinearPoints
+*-----------------------------------------------------------
+Running 17 total tests.
+
+The inputs satisfy the following conditions:
+  - no duplicate points
+  - no 5 (or more) points are collinear
+  - all x- and y-coordinates between 0 and 32,767
+
+Test 1: Points from a file
+  *  filename = input8.txt
+  *  filename = equidistant.txt
+  *  filename = input40.txt
+  *  filename = input48.txt
+==> passed
+
+Test 2a: Points from a file with horizontal line segments
+  *  filename = horizontal5.txt
+  *  filename = horizontal25.txt
+==> passed
+
+Test 2b: Random horizontal line segments
+  *   1 random horizontal line segment
+  *   5 random horizontal line segments
+  *  10 random horizontal line segments
+  *  15 random horizontal line segments
+==> passed
+
+Test 3a: Points from a file with vertical line segments
+  *  filename = vertical5.txt
+  *  filename = vertical25.txt
+==> passed
+
+Test 3b: Random vertical line segments
+  *   1 random vertical line segment
+  *   5 random vertical line segments
+  *  10 random vertical line segments
+  *  15 random vertical line segments
+==> passed
+
+Test 4a: Points from a file with no line segments
+  *  filename = random23.txt
+  *  filename = random38.txt
+==> passed
+
+Test 4b: Random points with no line segments
+  *   5 random points
+  *  10 random points
+  *  20 random points
+  *  50 random points
+==> passed
+
+Test 5: Points from a file with fewer than 4 points
+  *  filename = input1.txt
+  *  filename = input2.txt
+  *  filename = input3.txt
+==> passed
+
+Test 6: Check for dependence on either compareTo() or compare()
+        returning { -1, +1, 0 } instead of { negative integer,
+        positive integer, zero }
+  *  filename = equidistant.txt
+  *  filename = input40.txt
+  *  filename = input48.txt
+==> passed
+
+Test 7: Check for fragile dependence on return value of toString()
+  *  filename = equidistant.txt
+     java.lang.IllegalArgumentException: the argument contains a repeated point
+
+     BruteCollinearPoints.<init>(BruteCollinearPoints.java:19)
+     TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:110)
+     TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:154)
+     TestBruteCollinearPoints.test7(TestBruteCollinearPoints.java:308)
+     TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:733)
+
+  *  filename = input40.txt
+     java.lang.IllegalArgumentException: the argument contains a repeated point
+
+     BruteCollinearPoints.<init>(BruteCollinearPoints.java:19)
+     TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:110)
+     TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:154)
+     TestBruteCollinearPoints.test7(TestBruteCollinearPoints.java:309)
+     TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:733)
+
+  *  filename = input48.txt
+     java.lang.IllegalArgumentException: the argument contains a repeated point
+
+     BruteCollinearPoints.<init>(BruteCollinearPoints.java:19)
+     TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:110)
+     TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:154)
+     TestBruteCollinearPoints.test7(TestBruteCollinearPoints.java:310)
+     TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:733)
+
+==> FAILED
+
+Test 8: Random line segments, none vertical or horizontal
+  *   1 random line segment
+  *   5 random line segments
+  *  10 random line segments
+  *  15 random line segments
+==> passed
+
+Test 9: Random line segments
+  *   1 random line segment
+  *   5 random line segments
+  *  10 random line segments
+  *  15 random line segments
+==> passed
+
+Test 10: Check that data type is immutable by testing whether each method
+        returns the same value, regardless of any intervening operations
+  *  input8.txt
+  *  equidistant.txt
+==> passed
+
+Test 11: Check that data type does not mutate the constructor argument
+  *  input8.txt
+  *  equidistant.txt
+==> passed
+
+Test 12: numberOfSegments() is consistent with segments()
+  *  filename = input8.txt
+  *  filename = equidistant.txt
+  *  filename = input40.txt
+  *  filename = input48.txt
+  *  filename = horizontal5.txt
+  *  filename = vertical5.txt
+  *  filename = random23.txt
+==> passed
+
+Test 13: Throws exception either if argument to constructor is null
+         or if any entry in array is null
+  *  argument is null
+  *  Point[] of length 10, number of null entries = 1
+  *  Point[] of length 10, number of null entries = 10
+  *  Point[] of length 4, number of null entries = 1
+  *  Point[] of length 3, number of null entries = 1
+  *  Point[] of length 2, number of null entries = 1
+  *  Point[] of length 1, number of null entries = 1
+==> passed
+
+Test 14: Check that the constructor throws an exception if duplicate points
+  *  50 points
+  *  25 points
+  *  5 points
+  *  4 points
+  *  3 points
+  *  2 points
+==> passed
+
+
+Total: 16/17 tests passed!
+
+
+================================================================
+
+Testing methods in FastCollinearPoints
+*-----------------------------------------------------------
+Running 21 total tests.
+
+The inputs satisfy the following conditions:
+  - no duplicate points
+  - all x- and y-coordinates between 0 and 32,767
+
+Test 1: Points from a file
+  *  filename = input8.txt
+  *  filename = equidistant.txt
+  *  filename = input40.txt
+     -  student   solution has 3 non-null entries
+     -  reference solution has 4 non-null entries
+     -  1 missing entry in student solution: (1000, 17000) -> (1000, 27000) -> (1000, 28000) -> (1000, 31000)
+
+  *  filename = input48.txt
+     -  student   solution has 4 non-null entries
+     -  reference solution has 6 non-null entries
+     -  2 missing entries in student solution, including: (18000, 13000) -> (18000, 23000) -> (18000, 26000) -> (18000, 27000)
+
+  *  filename = input299.txt
+     -  student   solution has 4 non-null entries
+     -  reference solution has 6 non-null entries
+     -  2 missing entries in student solution, including: (7300, 10050) -> (7300, 10450) -> (7300, 25700) -> (7300, 31650)
+
+==> FAILED
+
+Test 2a: Points from a file with horizontal line segments
+  *  filename = horizontal5.txt
+  *  filename = horizontal25.txt
+     -  student   solution has 24 non-null entries
+     -  reference solution has 25 non-null entries
+     -  1 missing entry in student solution: (1697, 2986) -> (1762, 2986) -> (6512, 2986) -> (15748, 2986)
+
+  *  filename = horizontal50.txt
+     -  student   solution has 49 non-null entries
+     -  reference solution has 50 non-null entries
+     -  1 missing entry in student solution: (8643, 18776) -> (13201, 18776) -> (18979, 18776) -> (19621, 18776)
+
+  *  filename = horizontal75.txt
+     -  student   solution has 74 non-null entries
+     -  reference solution has 75 non-null entries
+     -  1 missing entry in student solution: (13711, 1871) -> (14177, 1871) -> (14932, 1871) -> (18503, 1871)
+
+  *  filename = horizontal100.txt
+     -  student   solution has 94 non-null entries
+     -  reference solution has 100 non-null entries
+     -  6 missing entries in student solution, including: (5640, 20636) -> (10242, 20636) -> (13207, 20636) -> (20063, 20636)
+
+==> FAILED
+
+Test 2b: Random horizontal line segments
+  *   1 random horizontal line segment
+     -  student   solution has 0 non-null entries
+     -  reference solution has 1 non-null entries
+     -  1 missing entry in student solution: (7265, 4526) -> (12061, 4526) -> (18871, 4526) -> (20544, 4526)
+
+     -  failed on trial 1 of 500
+     4
+      7265  4526
+     20544  4526
+     12061  4526
+     18871  4526
+
+  *   5 random horizontal line segments
+     -  student   solution has 3 non-null entries
+     -  reference solution has 5 non-null entries
+     -  2 missing entries in student solution, including: (1846, 14175) -> (8214, 14175) -> (14020, 14175) -> (18499, 14175)
+
+     -  failed on trial 7 of 250
+     20
+      3579  5734
+      1979  5734
+     18499 14175
+      4183 12721
+     19898 14125
+      3087 14125
+     13540 10411
+      5546 14125
+      1846 14175
+     16118 10411
+     10960 10411
+      1892 10411
+     14330  5734
+      5590  5734
+      2275 12721
+     16203 12721
+      8214 14175
+      3681 12721
+      2556 14125
+     14020 14175
+
+  *  10 random horizontal line segments
+     -  student   solution has 9 non-null entries
+     -  reference solution has 10 non-null entries
+     -  1 missing entry in student solution: (2468, 9009) -> (2951, 9009) -> (3071, 9009) -> (9853, 9009)
+
+     -  failed on trial 5 of 50
+
+  *  15 random horizontal line segments
+     -  student   solution has 14 non-null entries
+     -  reference solution has 15 non-null entries
+     -  1 missing entry in student solution: (1417, 13469) -> (6805, 13469) -> (11370, 13469) -> (13097, 13469)
+
+     -  failed on trial 5 of 5
+
+==> FAILED
+
+Test 3a: Points from a file with vertical line segments
+  *  filename = vertical5.txt
+     -  student   solution has 0 non-null entries
+     -  reference solution has 5 non-null entries
+     -  5 missing entries in student solution, including: (14407, 10367) -> (14407, 17188) -> (14407, 17831) -> (14407, 19953)
+
+  *  filename = vertical25.txt
+     -  student   solution has 0 non-null entries
+     -  reference solution has 25 non-null entries
+     -  25 missing entries in student solution, including: (19953, 10489) -> (19953, 10688) -> (19953, 19299) -> (19953, 20439)
+
+  *  filename = vertical50.txt
+     -  student   solution has 0 non-null entries
+     -  reference solution has 50 non-null entries
+     -  50 missing entries in student solution, including: (5991, 15606) -> (5991, 20227) -> (5991, 20340) -> (5991, 20424)
+
+  *  filename = vertical75.txt
+     -  student   solution has 0 non-null entries
+     -  reference solution has 75 non-null entries
+     -  75 missing entries in student solution, including: (13780, 16365) -> (13780, 17494) -> (13780, 18253) -> (13780, 18908)
+
+  *  filename = vertical100.txt
+     -  student   solution has 0 non-null entries
+     -  reference solution has 100 non-null entries
+     -  100 missing entries in student solution, including: (15135, 15588) -> (15135, 17398) -> (15135, 19476) -> (15135, 20439)
+
+==> FAILED
+
+Test 3b: Random vertical line segments
+  *   1 random vertical line segment
+     -  student   solution has 0 non-null entries
+     -  reference solution has 1 non-null entries
+     -  1 missing entry in student solution: (17369, 2243) -> (17369, 11292) -> (17369, 17529) -> (17369, 19291)
+
+     -  failed on trial 1 of 500
+     4
+     17369  2243
+     17369 11292
+     17369 17529
+     17369 19291
+
+  *   5 random vertical line segments
+     -  student   solution has 0 non-null entries
+     -  reference solution has 5 non-null entries
+     -  5 missing entries in student solution, including: (14289, 8139) -> (14289, 13642) -> (14289, 20647) -> (14289, 20804)
+
+     -  failed on trial 1 of 250
+     20
+     15542  5486
+     14289  8139
+     15415 19598
+     14289 20647
+     16398  8708
+      1765  9285
+     16398  1865
+     15542  3394
+      1765  6191
+     15415  4929
+     16398  1413
+     15542  9666
+      1765  2705
+     16398  1931
+     15542 10517
+     15415 17026
+      1765 15242
+     14289 20804
+     14289 13642
+     15415  3136
+
+  *  10 random vertical line segments
+     -  student   solution has 0 non-null entries
+     -  reference solution has 10 non-null entries
+     -  10 missing entries in student solution, including: (17536, 12839) -> (17536, 14307) -> (17536, 17036) -> (17536, 19595)
+
+     -  failed on trial 1 of 50
+
+  *  15 random vertical line segments
+     -  student   solution has 0 non-null entries
+     -  reference solution has 15 non-null entries
+     -  15 missing entries in student solution, including: (2363, 9933) -> (2363, 11563) -> (2363, 13905) -> (2363, 15273)
+
+     -  failed on trial 1 of 5
+
+==> FAILED
+
+Test 4a: Points from a file with no line segments
+  *  filename = random23.txt
+  *  filename = random38.txt
+  *  filename = random91.txt
+  *  filename = random152.txt
+==> passed
+
+Test 4b: Random points with no line segments
+  *   5 random points
+  *  10 random points
+  *  20 random points
+  *  50 random points
+==> passed
+
+Test 5a: Points from a file with 5 or more on some line segments
+  *  filename = input9.txt
+     -  student   solution has 0 non-null entries
+     -  reference solution has 1 non-null entries
+     -  1 missing entry in student solution: (1000, 1000) -> (2000, 2000) -> (3000, 3000) -> (4000, 4000) -> (5000, 5000) -> (6000, 6000) -> (7000, 7000) -> (8000, 8000) -> (9000, 9000)
+
+  *  filename = input10.txt
+     -  student   solution has 1 non-null entries
+     -  reference solution has 2 non-null entries
+     -  1 missing entry in student solution: (1000, 18000) -> (2000, 22000) -> (3000, 26000) -> (3500, 28000) -> (4000, 30000)
+
+  *  filename = input20.txt
+     -  student   solution has 3 non-null entries
+     -  reference solution has 5 non-null entries
+     -  2 missing entries in student solution, including: (8192, 25088) -> (8192, 26112) -> (8192, 27136) -> (8192, 28160) -> (8192, 29184)
+
+  *  filename = input50.txt
+     -  student   solution has 5 non-null entries
+     -  reference solution has 7 non-null entries
+     -  2 missing entries in student solution, including: (18000, 13000) -> (18000, 23000) -> (18000, 26000) -> (18000, 27000) -> (18000, 30000)
+
+  *  filename = input80.txt
+     -  student   solution has 23 non-null entries
+     -  reference solution has 31 non-null entries
+     -  8 missing entries in student solution, including: (29000, 14000) -> (29000, 18000) -> (29000, 24000) -> (29000, 31000)
+
+  *  filename = input300.txt
+     -  student   solution has 4 non-null entries
+     -  reference solution has 6 non-null entries
+     -  2 missing entries in student solution, including: (7300, 10050) -> (7300, 10450) -> (7300, 17000) -> (7300, 25700) -> (7300, 31650)
+
+  *  filename = inarow.txt
+     -  student   solution has 3 non-null entries
+     -  reference solution has 5 non-null entries
+     -  2 missing entries in student solution, including: (0, 0) -> (0, 5000) -> (0, 10000) -> (0, 11000) -> (0, 15000) -> (0, 20000) -> (0, 25000) -> (0, 30000)
+
+==> FAILED
+
+Test 5b: Points from a file with 5 or more on some line segments
+  *  filename = kw1260.txt
+     -  student   solution has 258 non-null entries
+     -  reference solution has 288 non-null entries
+     -  30 missing entries in student solution, including: (15188, 21523) -> (15188, 21611) -> (15188, 21699) -> (15188, 21787) -> (15188, 21875)
+
+  *  filename = rs1423.txt
+     -  student   solution has 430 non-null entries
+     -  reference solution has 443 non-null entries
+     -  13 missing entries in student solution, including: (7509, 26859) -> (7768, 27091) -> (8027, 27323) -> (8286, 27555)
+
+==> FAILED
+
+Test 6: Points from a file with fewer than 4 points
+  *  filename = input1.txt
+     java.lang.ArrayIndexOutOfBoundsException: 1
+
+     FastCollinearPoints.<init>(FastCollinearPoints.java:29)
+     TestFastCollinearPoints.testSegments(TestFastCollinearPoints.java:110)
+     TestFastCollinearPoints.file(TestFastCollinearPoints.java:154)
+     TestFastCollinearPoints.test6(TestFastCollinearPoints.java:317)
+     TestFastCollinearPoints.main(TestFastCollinearPoints.java:797)
+
+  *  filename = input2.txt
+  *  filename = input3.txt
+==> FAILED
+
+Test 7: Check for dependence on either compareTo() or compare()
+        returning { -1, +1, 0 } instead of { negative integer,
+        positive integer, zero }
+  *  filename = equidistant.txt
+  *  filename = input40.txt
+     -  student   solution has 3 non-null entries
+     -  reference solution has 4 non-null entries
+     -  1 missing entry in student solution: (1000, 17000) -> (1000, 27000) -> (1000, 28000) -> (1000, 31000)
+
+  *  filename = input48.txt
+     -  student   solution has 4 non-null entries
+     -  reference solution has 6 non-null entries
+     -  2 missing entries in student solution, including: (18000, 13000) -> (18000, 23000) -> (18000, 26000) -> (18000, 27000)
+
+  *  filename = input299.txt
+     -  student   solution has 4 non-null entries
+     -  reference solution has 6 non-null entries
+     -  2 missing entries in student solution, including: (7300, 10050) -> (7300, 10450) -> (7300, 25700) -> (7300, 31650)
+
+==> FAILED
+
+Test 8: Check for fragile dependence on return value of toString()
+  *  filename = equidistant.txt
+     java.lang.IllegalArgumentException: the argument contains a repeated point
+
+     FastCollinearPoints.<init>(FastCollinearPoints.java:20)
+     TestFastCollinearPoints.testSegments(TestFastCollinearPoints.java:110)
+     TestFastCollinearPoints.file(TestFastCollinearPoints.java:154)
+     TestFastCollinearPoints.test8(TestFastCollinearPoints.java:339)
+     TestFastCollinearPoints.main(TestFastCollinearPoints.java:803)
+
+  *  filename = input40.txt
+     java.lang.IllegalArgumentException: the argument contains a repeated point
+
+     FastCollinearPoints.<init>(FastCollinearPoints.java:20)
+     TestFastCollinearPoints.testSegments(TestFastCollinearPoints.java:110)
+     TestFastCollinearPoints.file(TestFastCollinearPoints.java:154)
+     TestFastCollinearPoints.test8(TestFastCollinearPoints.java:340)
+     TestFastCollinearPoints.main(TestFastCollinearPoints.java:803)
+
+  *  filename = input48.txt
+     java.lang.IllegalArgumentException: the argument contains a repeated point
+
+     FastCollinearPoints.<init>(FastCollinearPoints.java:20)
+     TestFastCollinearPoints.testSegments(TestFastCollinearPoints.java:110)
+     TestFastCollinearPoints.file(TestFastCollinearPoints.java:154)
+     TestFastCollinearPoints.test8(TestFastCollinearPoints.java:341)
+     TestFastCollinearPoints.main(TestFastCollinearPoints.java:803)
+
+==> FAILED
+
+Test 9: Random line segments, none vertical or horizontal
+  *   1 random line segment
+     -  student   solution has 0 non-null entries
+     -  reference solution has 1 non-null entries
+     -  1 missing entry in student solution: (441, 7152) -> (7812, 9105) -> (8631, 9322) -> (9450, 9539)
+
+     -  failed on trial 1 of 500
+     4
+      9450  9539
+       441  7152
+      8631  9322
+      7812  9105
+
+  *   5 random line segments
+     -  student   solution has 4 non-null entries
+     -  reference solution has 5 non-null entries
+     -  1 missing entry in student solution: (5806, 5574) -> (5983, 8544) -> (6160, 11514) -> (6396, 15474)
+
+     -  failed on trial 3 of 500
+     20
+      5652  4819
+      1550  8253
+      4468 12283
+      5983  8544
+     16005 14008
+      8732 13739
+     10658  8517
+      3935 12101
+      5806  5574
+       737 11009
+      6863  8407
+      6396 15474
+     14435 13890
+      9140  8473
+     17427 10024
+      8155 13418
+      6160 11514
+     14287  8636
+     15072  8983
+      5015 13182
+
+  *  25 random line segments
+     -  student   solution has 24 non-null entries
+     -  reference solution has 25 non-null entries
+     -  1 missing entry in student solution: (9728, 3096) -> (11690, 4836) -> (13652, 6576) -> (21500, 13536)
+
+     -  failed on trial 1 of 100
+
+  *  50 random line segments
+     -  student   solution has 47 non-null entries
+     -  reference solution has 50 non-null entries
+     -  3 missing entries in student solution, including: (11438, 4907) -> (14642, 9197) -> (15176, 9912) -> (16778, 12057)
+
+     -  failed on trial 1 of 15
+
+  *  100 random line segments
+     -  student   solution has 99 non-null entries
+     -  reference solution has 100 non-null entries
+     -  1 missing entry in student solution: (11796, 11637) -> (14811, 13602) -> (18429, 15960) -> (20238, 17139)
+
+     -  failed on trial 1 of 2
+
+==> FAILED
+
+Test 10: Random line segments
+  *   1 random line segment
+     -  student   solution has 0 non-null entries
+     -  reference solution has 1 non-null entries
+     -  1 missing entry in student solution: (13617, 10217) -> (13674, 10379) -> (14358, 12323) -> (14415, 12485)
+
+     -  failed on trial 1 of 500
+     4
+     13674 10379
+     14358 12323
+     14415 12485
+     13617 10217
+
+  *   5 random line segments
+     -  student   solution has 4 non-null entries
+     -  reference solution has 5 non-null entries
+     -  1 missing entry in student solution: (14670, 6301) -> (14670, 7289) -> (14670, 8429) -> (14670, 8581)
+
+     -  failed on trial 1 of 500
+     20
+     14670  7289
+     13151 12769
+      6210  7004
+     11837 12769
+      3108  3614
+      6903  4974
+      5331  5642
+     10888 12769
+     14670  8429
+      6021  3378
+      5979  3302
+      2470  7004
+     14670  8581
+      6585  6786
+     14670  6301
+      9136 12769
+      2030  7004
+      5727  2846
+      6980  7004
+      3678  4134
+
+  *  25 random line segments
+     -  student   solution has 22 non-null entries
+     -  reference solution has 25 non-null entries
+     -  3 missing entries in student solution, including: (6145, 13108) -> (6145, 13208) -> (6145, 13344) -> (6145, 13432)
+
+     -  failed on trial 1 of 100
+
+  *  50 random line segments
+     -  student   solution has 41 non-null entries
+     -  reference solution has 50 non-null entries
+     -  9 missing entries in student solution, including: (13663, 13203) -> (13663, 13224) -> (13663, 13284) -> (13663, 13314)
+
+     -  failed on trial 1 of 15
+
+  *  100 random line segments
+     -  student   solution has 83 non-null entries
+     -  reference solution has 100 non-null entries
+     -  17 missing entries in student solution, including: (10724, 12590) -> (10724, 12613) -> (10724, 12659) -> (10724, 14476)
+
+     -  failed on trial 1 of 2
+
+==> FAILED
+
+Test 11: Random distinct points in a given range
+  *  5 random points in a 10-by-10 grid
+     -  student   solution has 0 non-null entries
+     -  reference solution has 1 non-null entries
+     -  1 missing entry in student solution: (3, 5) -> (5, 5) -> (6, 5) -> (7, 5) -> (8, 5)
+
+     -  failed on trial 189 of 500
+     5
+         5     5
+         7     5
+         6     5
+         3     5
+         8     5
+
+  *  10 random points in a 10-by-10 grid
+     -  student   solution has 0 non-null entries
+     -  reference solution has 1 non-null entries
+     -  1 missing entry in student solution: (4, 2) -> (4, 3) -> (4, 4) -> (4, 5)
+
+     -  failed on trial 12 of 500
+     10
+         8     6
+         4     3
+         7     4
+         4     4
+         0     4
+         8     7
+         1     2
+         4     2
+         3     5
+         4     5
+
+  *  50 random points in a 10-by-10 grid
+     -  student   solution has 28 non-null entries
+     -  reference solution has 37 non-null entries
+     -  9 missing entries in student solution, including: (4, 1) -> (4, 2) -> (4, 3) -> (4, 7)
+
+     -  failed on trial 1 of 100
+
+  *  90 random points in a 10-by-10 grid
+     -  student   solution has 117 non-null entries
+     -  reference solution has 130 non-null entries
+     -  13 missing entries in student solution, including: (1, 6) -> (3, 7) -> (5, 8) -> (7, 9)
+
+     -  failed on trial 1 of 50
+
+  *  200 random points in a 50-by-50 grid
+     -  student   solution has 186 non-null entries
+     -  reference solution has 220 non-null entries
+     -  34 missing entries in student solution, including: (46, 28) -> (46, 30) -> (46, 33) -> (46, 47)
+
+     -  failed on trial 1 of 10
+
+==> FAILED
+
+Test 12: M*N points on an M-by-N grid
+  *  3-by-3 grid
+  *  4-by-4 grid
+     -  student   solution has 6 non-null entries
+     -  reference solution has 10 non-null entries
+     -  4 missing entries in student solution, including: (3, 0) -> (3, 1) -> (3, 2) -> (3, 3)
+
+  *  5-by-5 grid
+     -  student   solution has 11 non-null entries
+     -  reference solution has 16 non-null entries
+     -  5 missing entries in student solution, including: (4, 0) -> (4, 1) -> (4, 2) -> (4, 3) -> (4, 4)
+
+  *  10-by-10 grid
+     -  student   solution has 144 non-null entries
+     -  reference solution has 154 non-null entries
+     -  10 missing entries in student solution, including: (9, 0) -> (9, 1) -> (9, 2) -> (9, 3) -> (9, 4) -> (9, 5) -> (9, 6) -> (9, 7) -> (9, 8) -> (9, 9)
+
+  *  20-by-20 grid
+     -  student   solution has 2391 non-null entries
+     -  reference solution has 2446 non-null entries
+     -  55 missing entries in student solution, including: (16, 16) -> (11, 17) -> (6, 18) -> (1, 19)
+
+  *  5-by-4 grid
+     -  student   solution has 8 non-null entries
+     -  reference solution has 13 non-null entries
+     -  5 missing entries in student solution, including: (4, 0) -> (4, 1) -> (4, 2) -> (4, 3)
+
+  *  6-by-4 grid
+     -  student   solution has 10 non-null entries
+     -  reference solution has 16 non-null entries
+     -  6 missing entries in student solutio
+
+...
+
+Warning: the grading output was truncated due to excessive length.
+Typically, this is becasue you have a method that has an unanticipated side effect
+(such as printing to standard output or throwing an exception).
