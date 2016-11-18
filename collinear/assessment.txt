@@ -1,18 +1,27 @@
-Correctness:  28/41 tests passed
+See the Assessment Guide for information on how to interpret this report.
+
+Assessment Summary
+
+Compilation:  PASSED
+Style:        PASSED
+Findbugs:     No potential bugs found.
+API:          PASSED
+
+Correctness:  38/41 tests passed
 Memory:       1/1 tests passed
 Timing:       10/41 tests passed
 
-Aggregate score: 60.49% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
+Aggregate score: 76.34% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
 
 Assessment Details
 
 The following files were submitted:
 ----------------------------------
 total 28K
--rw-r--r-- 1 3.4K Nov 18 08:03 BruteCollinearPoints.java
--rw-r--r-- 1 4.2K Nov 18 08:03 FastCollinearPoints.java
--rw-r--r-- 1 4.3K Nov 18 08:03 Point.java
--rw-r--r-- 1 4.5K Nov 18 08:03 studentSubmission.zip
+-rw-r--r-- 1 3.4K Nov 18 08:53 BruteCollinearPoints.java
+-rw-r--r-- 1 4.3K Nov 18 08:53 FastCollinearPoints.java
+-rw-r--r-- 1 4.3K Nov 18 08:53 Point.java
+-rw-r--r-- 1 4.5K Nov 18 08:53 studentSubmission.zip
 
 
 ********************************************************************************
@@ -273,138 +282,32 @@ Test 1: Points from a file
 Test 2a: Points from a file with horizontal line segments
   *  filename = horizontal5.txt
   *  filename = horizontal25.txt
-     -  student   solution has 24 non-null entries
-     -  reference solution has 25 non-null entries
-     -  1 missing entry in student solution: (1697, 2986) -> (1762, 2986) -> (6512, 2986) -> (15748, 2986)
-
   *  filename = horizontal50.txt
-     -  student   solution has 49 non-null entries
-     -  reference solution has 50 non-null entries
-     -  1 missing entry in student solution: (8643, 18776) -> (13201, 18776) -> (18979, 18776) -> (19621, 18776)
-
   *  filename = horizontal75.txt
-     -  student   solution has 74 non-null entries
-     -  reference solution has 75 non-null entries
-     -  1 missing entry in student solution: (13711, 1871) -> (14177, 1871) -> (14932, 1871) -> (18503, 1871)
-
   *  filename = horizontal100.txt
-     -  student   solution has 94 non-null entries
-     -  reference solution has 100 non-null entries
-     -  6 missing entries in student solution, including: (5640, 20636) -> (10242, 20636) -> (13207, 20636) -> (20063, 20636)
-
-==> FAILED
+==> passed
 
 Test 2b: Random horizontal line segments
   *   1 random horizontal line segment
   *   5 random horizontal line segments
-     -  student   solution has 4 non-null entries
-     -  reference solution has 5 non-null entries
-     -  1 missing entry in student solution: (4340, 1704) -> (7720, 1704) -> (14683, 1704) -> (15072, 1704)
-
-     -  failed on trial 9 of 250
-     20
-     19986 14905
-      1252 14905
-      7592 15132
-      4911 15132
-      7904 19620
-     13541 10545
-     11982 19620
-     14683  1704
-     13457 14905
-     19058 15132
-     20032 14905
-      1034 10545
-      3444 19620
-      7720  1704
-      8228 19620
-      3863 15132
-      4340  1704
-      2752 10545
-     14338 10545
-     15072  1704
-
   *  10 random horizontal line segments
-     -  student   solution has 9 non-null entries
-     -  reference solution has 10 non-null entries
-     -  1 missing entry in student solution: (8246, 18051) -> (9923, 18051) -> (12233, 18051) -> (12903, 18051)
-
-     -  failed on trial 13 of 50
-
   *  15 random horizontal line segments
-     -  student   solution has 14 non-null entries
-     -  reference solution has 15 non-null entries
-     -  1 missing entry in student solution: (2765, 20609) -> (2767, 20609) -> (7445, 20609) -> (13675, 20609)
-
-     -  failed on trial 2 of 5
-
-==> FAILED
+==> passed
 
 Test 3a: Points from a file with vertical line segments
   *  filename = vertical5.txt
   *  filename = vertical25.txt
   *  filename = vertical50.txt
-     -  student   solution has 47 non-null entries
-     -  reference solution has 50 non-null entries
-     -  3 missing entries in student solution, including: (13871, 12374) -> (13871, 15848) -> (13871, 17796) -> (13871, 19018)
-
   *  filename = vertical75.txt
-     -  student   solution has 73 non-null entries
-     -  reference solution has 75 non-null entries
-     -  2 missing entries in student solution, including: (17620, 1804) -> (17620, 2742) -> (17620, 10489) -> (17620, 17870)
-
   *  filename = vertical100.txt
-     -  student   solution has 95 non-null entries
-     -  reference solution has 100 non-null entries
-     -  5 missing entries in student solution, including: (15570, 14475) -> (15570, 14654) -> (15570, 16224) -> (15570, 17117)
-
-==> FAILED
+==> passed
 
 Test 3b: Random vertical line segments
   *   1 random vertical line segment
   *   5 random vertical line segments
-     -  student   solution has 4 non-null entries
-     -  reference solution has 5 non-null entries
-     -  1 missing entry in student solution: (19202, 3771) -> (19202, 4989) -> (19202, 10378) -> (19202, 10478)
-
-     -  failed on trial 44 of 250
-     20
-     14962 19647
-     17175 13964
-     17175  6059
-     17175 19844
-     14962 17550
-     19929  2402
-     17175 12013
-     14962 20246
-     13075 20117
-     13075 19571
-     19929  7040
-     19929  7895
-     19202  3771
-     19202 10378
-     14962 19395
-     13075  7854
-     19202  4989
-     19929  4000
-     13075 18710
-     19202 10478
-
   *  10 random vertical line segments
-     -  student   solution has 9 non-null entries
-     -  reference solution has 10 non-null entries
-     -  1 missing entry in student solution: (20900, 7266) -> (20900, 15639) -> (20900, 19578) -> (20900, 20225)
-
-     -  failed on trial 4 of 50
-
   *  15 random vertical line segments
-     -  student   solution has 14 non-null entries
-     -  reference solution has 15 non-null entries
-     -  1 missing entry in student solution: (3108, 1941) -> (3108, 3222) -> (3108, 6147) -> (3108, 10458)
-
-     -  failed on trial 1 of 5
-
-==> FAILED
+==> passed
 
 Test 4a: Points from a file with no line segments
   *  filename = random23.txt
@@ -432,45 +335,19 @@ Test 5a: Points from a file with 5 or more on some line segments
 
 Test 5b: Points from a file with 5 or more on some line segments
   *  filename = kw1260.txt
-     -  student   solution has 280 non-null entries
-     -  reference solution has 288 non-null entries
-     -  8 missing entries in student solution, including: (10752, 19203) -> (10963, 19643) -> (11174, 20083) -> (11385, 20523) -> (11596, 20963)
-
   *  filename = rs1423.txt
-     -  student   solution has 431 non-null entries
-     -  reference solution has 443 non-null entries
-     -  12 missing entries in student solution, including: (7509, 26859) -> (7768, 27091) -> (8027, 27323) -> (8286, 27555)
-
-==> FAILED
+==> passed
 
 Test 6: Points from a file with fewer than 4 points
   *  filename = input1.txt
-     java.lang.NullPointerException
-
-     FastCollinearPoints.segments(FastCollinearPoints.java:58)
-     TestFastCollinearPoints.testSegments(TestFastCollinearPoints.java:112)
-     TestFastCollinearPoints.file(TestFastCollinearPoints.java:154)
-     TestFastCollinearPoints.test6(TestFastCollinearPoints.java:317)
-     TestFastCollinearPoints.main(TestFastCollinearPoints.java:797)
-
+     -  student segments() returns null
+     -  it should return an array of length 0
   *  filename = input2.txt
-     java.lang.NullPointerException
-
-     FastCollinearPoints.segments(FastCollinearPoints.java:58)
-     TestFastCollinearPoints.testSegments(TestFastCollinearPoints.java:112)
-     TestFastCollinearPoints.file(TestFastCollinearPoints.java:154)
-     TestFastCollinearPoints.test6(TestFastCollinearPoints.java:318)
-     TestFastCollinearPoints.main(TestFastCollinearPoints.java:797)
-
+     -  student segments() returns null
+     -  it should return an array of length 0
   *  filename = input3.txt
-     java.lang.NullPointerException
-
-     FastCollinearPoints.segments(FastCollinearPoints.java:58)
-     TestFastCollinearPoints.testSegments(TestFastCollinearPoints.java:112)
-     TestFastCollinearPoints.file(TestFastCollinearPoints.java:154)
-     TestFastCollinearPoints.test6(TestFastCollinearPoints.java:319)
-     TestFastCollinearPoints.main(TestFastCollinearPoints.java:797)
-
+     -  student segments() returns null
+     -  it should return an array of length 0
 ==> FAILED
 
 Test 7: Check for dependence on either compareTo() or compare()
@@ -503,151 +380,26 @@ Test 8: Check for fragile dependence on return value of toString()
 Test 9: Random line segments, none vertical or horizontal
   *   1 random line segment
   *   5 random line segments
-     -  student   solution has 4 non-null entries
-     -  reference solution has 5 non-null entries
-     -  1 missing entry in student solution: (4749, 1240) -> (5666, 2089) -> (17587, 13126) -> (19421, 14824)
-
-     -  failed on trial 13 of 500
-     20
-      6229  9645
-      5654  8957
-      3355  8371
-       661  7799
-     17587 13126
-      7582  9743
-      1054  3453
-      4749  1240
-      2779  5517
-      5666  2089
-     13734 11471
-      4506  8879
-      5602  9832
-      4104  8858
-     19421 14824
-     11229 13770
-      7419  7890
-      3609  2010
-      4752  3774
-       359  6423
-
   *  25 random line segments
-     -  student   solution has 22 non-null entries
-     -  reference solution has 25 non-null entries
-     -  3 missing entries in student solution, including: (5524, 14603) -> (6252, 14622) -> (13532, 14812) -> (17172, 14907)
-
-     -  failed on trial 1 of 100
-
   *  50 random line segments
-     -  student   solution has 48 non-null entries
-     -  reference solution has 50 non-null entries
-     -  2 missing entries in student solution, including: (7547, 2206) -> (8176, 2547) -> (14466, 5957) -> (15095, 6298)
-
-     -  failed on trial 1 of 15
-
   *  100 random line segments
-     -  student   solution has 96 non-null entries
-     -  reference solution has 100 non-null entries
-     -  4 missing entries in student solution, including: (4343, 13880) -> (7061, 14789) -> (7967, 15092) -> (15215, 17516)
-
-     -  failed on trial 1 of 2
-
-==> FAILED
+==> passed
 
 Test 10: Random line segments
   *   1 random line segment
   *   5 random line segments
-     -  student   solution has 4 non-null entries
-     -  reference solution has 5 non-null entries
-     -  1 missing entry in student solution: (3965, 4314) -> (4973, 4692) -> (5117, 4746) -> (7205, 5529)
-
-     -  failed on trial 17 of 500
-     20
-      8115  6429
-      7771  6269
-      5256  5139
-      4973  4692
-      5117  4746
-      3965  4314
-      7298 12628
-      7298 10374
-      5256  4983
-      5419 11349
-      5256  5087
-      6225 11999
-      5256  3995
-      4768 10824
-       977  3109
-      5357 11299
-      7943  6349
-      7298  5866
-      7298 12824
-      7205  5529
-
   *  25 random line segments
-     -  student   solution has 24 non-null entries
-     -  reference solution has 25 non-null entries
-     -  1 missing entry in student solution: (12874, 10298) -> (13054, 10398) -> (13288, 10528) -> (13306, 10538)
-
-     -  failed on trial 2 of 100
-
   *  50 random line segments
-     -  student   solution has 49 non-null entries
-     -  reference solution has 50 non-null entries
-     -  1 missing entry in student solution: (2189, 8135) -> (3995, 10949) -> (4597, 11887) -> (5887, 13897)
-
-     -  failed on trial 1 of 15
-
   *  100 random line segments
-     -  student   solution has 94 non-null entries
-     -  reference solution has 100 non-null entries
-     -  6 missing entries in student solution, including: (7923, 11612) -> (9507, 12316) -> (11163, 13052) -> (11235, 13084)
-
-     -  failed on trial 1 of 2
-
-==> FAILED
+==> passed
 
 Test 11: Random distinct points in a given range
   *  5 random points in a 10-by-10 grid
   *  10 random points in a 10-by-10 grid
-     -  student   solution has 0 non-null entries
-     -  reference solution has 1 non-null entries
-     -  1 missing entry in student solution: (0, 0) -> (6, 6) -> (7, 7) -> (9, 9)
-
-     -  failed on trial 479 of 500
-     10
-         2     3
-         3     9
-         9     9
-         0     0
-         7     7
-         8     6
-         6     0
-         9     0
-         5     6
-         6     6
-
   *  50 random points in a 10-by-10 grid
-     -  student   solution has 43 non-null entries
-     -  reference solution has 44 non-null entries
-     -  1 missing entry in student solution: (0, 2) -> (3, 3) -> (6, 4) -> (9, 5)
-
-     -  failed on trial 5 of 100
-
   *  90 random points in a 10-by-10 grid
-     -  student   solution has 126 non-null entries
-     -  reference solution has 127 non-null entries
-     -  1 missing entry in student solution: (4, 1) -> (5, 3) -> (6, 5) -> (7, 7)
-
-     -  failed on trial 1 of 50
-
   *  200 random points in a 50-by-50 grid
-     -  student   solution has 219 non-null entries
-     -  reference solution has 230 non-null entries
-     -  11 missing entries in student solution, including: (42, 26) -> (34, 30) -> (30, 32) -> (22, 36)
-
-     -  failed on trial 1 of 10
-
-==> FAILED
+==> passed
 
 Test 12: M*N points on an M-by-N grid
   *  3-by-3 grid
@@ -655,24 +407,12 @@ Test 12: M*N points on an M-by-N grid
   *  5-by-5 grid
   *  10-by-10 grid
   *  20-by-20 grid
-     -  student   solution has 2412 non-null entries
-     -  reference solution has 2446 non-null entries
-     -  34 missing entries in student solution, including: (19, 16) -> (15, 17) -> (11, 18) -> (7, 19)
-
   *  5-by-4 grid
   *  6-by-4 grid
   *  10-by-4 grid
   *  15-by-4 grid
-     -  student   solution has 78 non-null entries
-     -  reference solution has 79 non-null entries
-     -  1 missing entry in student solution: (9, 0) -> (9, 1) -> (9, 2) -> (9, 3)
-
   *  25-by-4 grid
-     -  student   solution has 212 non-null entries
-     -  reference solution has 213 non-null entries
-     -  1 missing entry in student solution: (21, 0) -> (16, 1) -> (11, 2) -> (6, 3)
-
-==> FAILED
+==> passed
 
 Test 13: Check that data type is immutable by testing whether each method
          returns the same value, regardless of any intervening operations
@@ -682,12 +422,8 @@ Test 13: Check that data type is immutable by testing whether each method
 
 Test 14: Check that data type does not mutate the constructor argument
   *  input8.txt
-     -  data type mutated the points[] array
-     -  data type should have no side effects unless documented in API
   *  equidistant.txt
-     -  data type mutated the points[] array
-     -  data type should have no side effects unless documented in API
-==> FAILED
+==> passed
 
 Test 15: numberOfSegments() is consistent with segments()
   *  filename = input8.txt
@@ -738,7 +474,7 @@ Test 17: Check that the constructor throws an exception if duplicate points
 ==> passed
 
 
-Total: 8/21 tests passed!
+Total: 18/21 tests passed!
 
 
 ================================================================
@@ -777,8 +513,8 @@ Test 1a-1e: Find collinear points among N random distinct points
 -----------------------------------------------------------------------------------------------
 => passed    16   0.01        3760           0           3760                    0
 => passed    32   0.00       72416           0          72416                    0
-=> passed    64   0.02     1272768           0        1272768                    0
-=> passed   128   0.02    21344128           0       21344128                    0
+=> passed    64   0.01     1272768           0        1272768                    0
+=> passed   128   0.05    21344128           0       21344128                    0
 => passed   256   0.29   349617920           0      349617920                    0
 ==> 5/5 tests passed
 
@@ -788,11 +524,11 @@ Test 2a-2e: Find collinear points among N/4 arbitrary line segments
                                                       slopeTo()
              N    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    16   0.00        3894           0           3894                   20
-=> passed    32   0.00       72898           0          72898                   39
-=> passed    64   0.01     1274550           0        1274550                   87
-=> passed   128   0.12    21352520           0       21352520                  168
-=> passed   256   1.61   349648280           0      349648280                  344
+=> passed    16   0.00        3882           0           3882                   17
+=> passed    32   0.00       72940           0          72940                   43
+=> passed    64   0.01     1274830           0        1274830                   82
+=> passed   128   0.11    21352184           0       21352184                  167
+=> passed   256   1.61   349648900           0      349648900                  344
 ==> 5/5 tests passed
 
 Total: 10/10 tests passed!
@@ -811,15 +547,15 @@ Test 1a-1g: Find collinear points among N random distinct points
                                                       slopeTo()
              N    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    64   0.02        6048       18716          43480                    0
-=> passed   128   0.01       24384       90379         205142                    0
-=> passed   256   0.03       97920      419351         936622                    0
-=> passed   512   0.16      392448     1877440        4147328                    0
-=> passed  1024   0.38     1571328     8570531       18712390                    0
-=> passed  2048   0.94     6288384    38143600       82575584                    0
+=> passed    64   0.02        6048       19630          45308                    0
+=> passed   128   0.01       24384       94487         213358                    0
+=> passed   256   0.04       97920      443076         984072                    0
+=> passed   512   0.16      392448     2034935        4462318                    0
+=> passed  1024   0.31     1571328     9181135       19933598                    0
+=> passed  2048   1.06     6288384    40928211       88144806                    0
 ==> 6/6 tests passed
 
-lg ratio(slopeTo() + 2*compare()) = lg (82575584 / 18712390) = 2.14
+lg ratio(slopeTo() + 2*compare()) = lg (88144806 / 19933598) = 2.14
 => passed
 
 ==> 7/7 tests passed
@@ -829,13 +565,13 @@ Test 2a-2g: Find collinear points among the N points on an N-by-1 grid
                                                       slopeTo()
              N    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    64   0.01        6048        4764          15576                19233
-=> passed   128   0.01       24384       17796          59976                95275
-=> FAILED   256   0.04       97920       68717         235354               440739   (1.1x)
-=> FAILED   512   0.16      392448      269399         931246              2033165   (1.4x)
-=> FAILED  1024   0.34     1571328     1065026        3701380              9170988   (1.6x)
-=> FAILED  2048   0.70     6288384     4231214       14750812             40918158   (1.9x)
-=> FAILED  4096   2.73    25159680    16859163       58878006            180481219   (2.1x)
+=> passed    64   0.01        6048        4764          15576                19562
+=> passed   128   0.01       24384       17796          59976                94480
+=> FAILED   256   0.03       97920       68717         235354               442640   (1.1x)
+=> FAILED   512   0.14      392448      269399         931246              2034020   (1.4x)
+=> FAILED  1024   0.33     1571328     1065026        3701380              9191216   (1.6x)
+=> FAILED  2048   0.69     6288384     4231214       14750812             40923795   (1.9x)
+=> FAILED  4096   2.74    25159680    16859163       58878006            180326964   (2.1x)
 ==> 2/7 tests passed
 
 lg ratio(slopeTo() + 2*compare()) = lg (58878006 / 14750812) = 2.00
@@ -848,10 +584,21 @@ Test 3a-3g: Find collinear points among the N points on an N/4-by-4 grid
                                                       slopeTo()
              N    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=>
+=> passed    64   0.01        6048       19493          45034                 4731
+=> passed   128   0.07       24384       93350         211084                22947
+=> passed   256   1.06       97920      428488         954896               107311
+=> passed   512  15.37      392448     1931423        4255294               493094
+Aborting: time limit of 10 seconds exceeded
 
-...
+Test 4a-4g: Find collinear points among the N points on an N/8-by-8 grid
 
-Warning: the grading output was truncated due to excessive length.
-Typically, this is becasue you have a method that has an unanticipated side effect
-(such as printing to standard output or throwing an exception).
+                                                      slopeTo()
+             N    time     slopeTo()   compare()  + 2*compare()        compareTo()
+-----------------------------------------------------------------------------------------------
+=> passed    64   0.00        6048       19578          45204                 4069
+=> passed   128   0.04       24384       94213         212810                17654
+=> passed   256   0.65       97920      441099         980118                78000
+=> passed   512   8.92      392448     2008177        4408802               345238
+
+Total: 0/31 tests passed: Could not complete tests in allotted time, which results in a reported score of 0.
+================================================================
