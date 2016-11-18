@@ -55,7 +55,7 @@ public class FastCollinearPoints {
 
     // the line segments
     public LineSegment[] segments() {
-        return segments.clone();
+        return segments != null ? segments.clone() : null;
     }
 
     public static void main(String[] args) {
