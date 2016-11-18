@@ -108,7 +108,13 @@ public class Point implements Comparable<Point> {
 
     private class BySlope implements Comparator<Point> {
         public int compare(Point v, Point w) {
-            return Double.compare(Point.this.slopeTo(v), Point.this.slopeTo(w));
+            int slopeCompare = Double.compare(Point.this.slopeTo(v),
+                                                Point.this.slopeTo(w));
+            if (slopeCompare < 0)
+                return -1;
+            if (slopeCompare > 0)
+                return +1;
+            return 0;
         }
     }
     /**
