@@ -24,7 +24,7 @@ public class FastCollinearPoints {
         if (points.length >= MINIMUM_SEGMENT_POINTS) {
             List<LineSegment> segmentsList = new ArrayList<LineSegment>();
             for (int i = 0; i < points.length; i++) {
-                Point[] sortPoints = points;
+                Point[] sortPoints = points.clone();
                 Arrays.sort(sortPoints, sortPoints[i].slopeOrder());
                 List<Point> pointsList = new ArrayList<Point>();
                 double slope = sortPoints[0].slopeTo(sortPoints[1]);
