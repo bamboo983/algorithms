@@ -86,14 +86,13 @@ public class Point implements Comparable<Point> {
 
         if (yCompare < 0)
             return -1;
-        else if (yCompare > 0)
+        if (yCompare > 0)
             return +1;
-        else if (xCompare < 0)
+        if (xCompare < 0)
             return -1;
-        else if (xCompare > 0)
+        if (xCompare > 0)
             return +1;
-        else
-            return 0;
+        return 0;
     }
 
     /**
