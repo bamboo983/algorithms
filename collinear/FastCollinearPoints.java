@@ -34,7 +34,7 @@ public class FastCollinearPoints {
                     rightSlopes.add(aux[i].slopeTo(aux[j]));
             }
 
-            Double current = Double.NEGATIVE_INFINITY;
+            double current = Double.NEGATIVE_INFINITY;
             int count = 0;
             for (int j = 0; j < rightSlopes.size(); j++) {
                 if (Double.compare(rightSlopes.get(j), current) != 0) {
