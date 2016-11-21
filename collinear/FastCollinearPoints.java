@@ -19,31 +19,43 @@ public class FastCollinearPoints {
             throw new IllegalArgumentException("the argument contains a repeated point");
 
         segments = new LineSegment[0];
-        if (points.length >= MINIMUM_SEGMENT_POINTS) {
-            List<LineSegment> segmentsList = new ArrayList<LineSegment>();
-            for (int i = 0; i < points.length; i++) {
-                Point[] sortPoints = points.clone();
-                Arrays.sort(sortPoints, sortPoints[i].slopeOrder());
-                List<Point> pointsList = new ArrayList<Point>();
-                double slope = sortPoints[0].slopeTo(sortPoints[1]);
-                pointsList.add(sortPoints[0]);
-                pointsList.add(sortPoints[1]);
-                for (int j = 2; j < sortPoints.length; j++) {
-                    double adjSlope = sortPoints[0].slopeTo(sortPoints[j]);
-                    if (adjSlope == slope) {
-                        pointsList.add(sortPoints[j]);
-                    } else {
-                        checkPointsToSegment(pointsList, segmentsList);
-                        pointsList.clear();
-                        pointsList.add(sortPoints[0]);
-                        pointsList.add(sortPoints[j]);
-                        slope = adjSlope;
-                    }
-                }
-                checkPointsToSegment(pointsList, segmentsList);
+        List<LineSegment> segmentsList = new ArrayList<LineSegment>();
+        Arrays.sort(points);
+        for (int i = 0; i < points.length; i++) {
+            Point[] aux = points.clone();
+            Arrays.sort(aux, i + 1, aux.length,  aux[i].slopeOrder());
+
+            List<Double> leftSlopes = new ArrayList<Double>();
+            List<Double> rightSlopes = new ArrayList<Double>();
+            for (int j = 0; j < aux.length; j++) {
+                if (j < i)
+                    leftSlopes.add(aux[i].slopeTo(aux[j]));
+                else if (j > i)
+                    rightSlopes.add(aux[i].slopeTo(aux[j]));
             }
-            segments = segmentsList.toArray(new LineSegment[0]);
+
+            Double current = Double.NEGATIVE_INFINITY;
+            int count = 0;
+            for (int j = 0; j < rightSlopes.size(); j++) {
+                if (Double.compare(rightSlopes.get(j), current) != 0) {
+                    if (count >= MINIMUM_SEGMENT_POINTS - 1) {
+                        if (!leftSlopes.contains(current))
+                            segmentsList.add(new LineSegment(aux[i],
+                                                    aux[i + j]));
+                    }
+                    current = rightSlopes.get(j);
+                    count = 1;
+                } else {
+                    count++;
+                }
+            }
+            if (count >= MINIMUM_SEGMENT_POINTS - 1) {
+                if (!leftSlopes.contains(current))
+                    segmentsList.add(new LineSegment(aux[i],
+                                            aux[i + rightSlopes.size()]));
+            }
         }
+        segments = segmentsList.toArray(new LineSegment[0]);
     }
 
     // the number of line segments
@@ -84,28 +96,6 @@ public class FastCollinearPoints {
             segment.draw();
         }
         StdDraw.show();
-    }
-
-    private LineSegment getSegment(Point[] points) {
-        Arrays.sort(points);
-        return new LineSegment(points[0], points[points.length - 1]);
-    }
-
-    private boolean checkSegments(List<LineSegment> segmentsList,
-        LineSegment segment) {
-        for (LineSegment s : segmentsList)
-            if (s.toString().equals(segment.toString()))
-                return true;
-        return false;
-    }
-
-    private void checkPointsToSegment(List<Point> pointsList,
-                                List<LineSegment> segmentsList) {
-        if (pointsList.size() >= MINIMUM_SEGMENT_POINTS) {
-            LineSegment segment = getSegment(pointsList.toArray(new Point[0]));
-            if (!checkSegments(segmentsList, segment))
-                segmentsList.add(segment);
-        }
     }
 
     private boolean checkDuplicatePoints(Point[] points) {
