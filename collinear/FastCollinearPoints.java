@@ -20,9 +20,10 @@ public class FastCollinearPoints {
 
         segments = new LineSegment[0];
         List<LineSegment> segmentsList = new ArrayList<LineSegment>();
-        Arrays.sort(points);
+        Point[] sortedPoints = points.clone();
+        Arrays.sort(sortedPoints);
         for (int i = 0; i < points.length; i++) {
-            Point[] aux = points.clone();
+            Point[] aux = sortedPoints;
             Arrays.sort(aux, i + 1, aux.length,  aux[i].slopeOrder());
 
             List<Double> leftSlopes = new ArrayList<Double>();
