@@ -23,7 +23,7 @@ public class FastCollinearPoints {
         Point[] sortedPoints = points.clone();
         Arrays.sort(sortedPoints);
         for (int i = 0; i < points.length; i++) {
-            Point[] aux = sortedPoints;
+            Point[] aux = sortedPoints.clone();
             Arrays.sort(aux, i + 1, aux.length,  aux[i].slopeOrder());
 
             List<Double> leftSlopes = new ArrayList<Double>();
