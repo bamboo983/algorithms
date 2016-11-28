@@ -6,7 +6,6 @@ import edu.princeton.cs.algs4.MinPQ;
 
 public class Solver {
     private Deque<Board> solution;
-    private int moves;
     private boolean isSolvable;
 
     // find a solution to the initial board (using the A* algorithm)
@@ -14,7 +13,6 @@ public class Solver {
         solution = new ArrayDeque<Board>();
         MinPQ<SearchNode> minPQ = new MinPQ<SearchNode>();
         MinPQ<SearchNode> minPQTwin = new MinPQ<SearchNode>();
-        moves = 0;
         isSolvable = false;
 
         Board board = initial;
@@ -116,10 +114,6 @@ public class Solver {
             this.moves = moves;
             this.priority = moves + board.manhattan();
             this.previous = previous;
-        }
-
-        private int priority() {
-            return moves + board.manhattan();
         }
 
         public int compareTo(SearchNode that) {
