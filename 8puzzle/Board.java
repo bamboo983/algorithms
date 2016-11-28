@@ -35,10 +35,9 @@ public class Board {
         int distance = 0;
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++) {
-
                 if (tiles[i][j] != 0) {
-                    int row = tiles[i][j] / n;
-                    int col = (tiles[i][j] + n - 1) % n;
+                    int row = (tiles[i][j] - 1) / n;
+                    int col = tiles[i][j] - 1 - row * n;
                     distance += Math.abs(row - i) + Math.abs(col - j);
                 }
             }
@@ -134,7 +133,6 @@ public class Board {
 
     // unit tests
     public static void main(String[] args) {
-
     }
 
     private boolean swap(int srcRow, int srcCol, int dstRow, int dstCol) {
