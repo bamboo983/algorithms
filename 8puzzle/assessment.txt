@@ -4,23 +4,23 @@ Assessment Summary
 
 Compilation:  PASSED
 Style:        PASSED
-Findbugs:     Potential bugs found.
+Findbugs:     No potential bugs found.
 API:          PASSED
 
-Correctness:  37/42 tests passed
+Correctness:  39/42 tests passed
 Memory:       11/11 tests passed
 Timing:       0/17 tests passed
 
-Aggregate score: 67.26% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
+Aggregate score: 70.36% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
 
 Assessment Details
 
 The following files were submitted:
 ----------------------------------
 total 20K
--rw-r--r-- 1 4.6K Nov 28 03:53 Board.java
--rw-r--r-- 1 4.6K Nov 28 03:53 Solver.java
--rw-r--r-- 1 2.8K Nov 28 03:53 studentSubmission.zip
+-rw-r--r-- 1 4.6K Nov 28 04:40 Board.java
+-rw-r--r-- 1 4.4K Nov 28 04:40 Solver.java
+-rw-r--r-- 1 2.8K Nov 28 04:40 studentSubmission.zip
 
 
 ********************************************************************************
@@ -48,9 +48,6 @@ total 20K
 
 % findbugs *.class
 *-----------------------------------------------------------
-L P UPM_UNCALLED_PRIVATE_METHOD UPM: The private method 'priority()' is never called.  At Solver.java:[line 122]
-M P URF_UNREAD_FIELD UrF: The instance (or static) variable 'moves' is never read. Consider removing it from the class.  At Solver.java:[line 17]
-Warnings generated: 2
 
 ================================================================
 
@@ -111,7 +108,7 @@ Test 2a: Test manhattan() with file inputs
         91 92 93 94 95 96 97 98 99  0
 
   *  puzzle07.txt
-     -  student   manhattan() = 5
+     -  student   manhattan() = 9
      -  reference manhattan() = 7
         3
          1  2  3
@@ -119,7 +116,7 @@ Test 2a: Test manhattan() with file inputs
          5  4  8
 
   *  puzzle17.txt
-     -  student   manhattan() = 5
+     -  student   manhattan() = 11
      -  reference manhattan() = 13
         3
          5  1  8
@@ -127,13 +124,6 @@ Test 2a: Test manhattan() with file inputs
          4  0  6
 
   *  puzzle27.txt
-     -  student   manhattan() = 11
-     -  reference manhattan() = 17
-        3
-         5  8  7
-         1  4  6
-         3  0  2
-
   *  puzzle2x2-unsolvable1.txt
      -  student   manhattan() = 2
      -  reference manhattan() = 3
@@ -146,10 +136,10 @@ Test 2a: Test manhattan() with file inputs
 Test 2b: Test manhattan() with random N-by-N boards
   *  2-by-2
      -  student   manhattan() = 2
-     -  reference manhattan() = 3
+     -  reference manhattan() = 1
         2
-         3  1
-         0  2
+         1  2
+         0  3
 
      -  Failed on trial 1 of 1000
 
@@ -157,71 +147,71 @@ Test 2b: Test manhattan() with random N-by-N boards
      -  student   manhattan() = 14
      -  reference manhattan() = 16
         3
-         8  5  0
-         7  2  4
-         6  1  3
+         7  5  4
+         1  3  8
+         6  2  0
 
      -  Failed on trial 1 of 1000
 
   *  4-by-4
-     -  student   manhattan() = 27
-     -  reference manhattan() = 34
+     -  student   manhattan() = 44
+     -  reference manhattan() = 43
         4
-         7 13  8 14
-         5  0  2  6
-         1 10 12  9
-        11 15  3  4
+         8 11 14  9
+         0  3  7 15
+        13  4 10 12
+         2  6  5  1
 
      -  Failed on trial 1 of 1000
 
   *  5-by-5
-     -  student   manhattan() = 64
-     -  reference manhattan() = 78
+     -  student   manhattan() = 79
+     -  reference manhattan() = 77
         5
-         2 18 10  3 24
-        15 22  4 16  1
-        20 14  6 11 13
-        19 17  5 23 21
-         0  7  8  9 12
+         9  2 19 18 24
+        10 20  0  7 17
+        15  1 16  4 11
+        23 22  3  5 12
+        21  6  8 14 13
 
      -  Failed on trial 1 of 1000
 
   *  9-by-9
-     -  student   manhattan() = 348
-     -  reference manhattan() = 478
+     -  student   manhattan() = 482
+     -  reference manhattan() = 480
         9
-        54 45 34 77  1 65 24 31 47
-        11 71 58  3 23 62 32 14 40
-        43 75 55 52 63 33 37 39 22
-        29 53 25 30 12 60 78 79 21
-        64 41 72 49 68 36 66 44 16
-        51  8 67 48 57 15  9 73 69
-        38  6 27 28 35 46 26 18 17
-        80 59  4 56 42  2 19 50 76
-         0 10  5 13 61 70 20  7 74
+        22 21 52 28 36 19 16 66 34
+        51 45  1 26 72 31 10 80 79
+        58 53 11 75 70 61  5 27 59
+        32 73 40 71 67  8 12 65 57
+        29 24 39 76 54 14 68 43 20
+        48  0 37 15 41 38 30 47  6
+        33  9 35 46 50 23 62 78 64
+        60 44 74  7 69 77 56 13 42
+        25  3  2 63 49 18  4 17 55
 
      -  Failed on trial 1 of 1000
 
   *  10-by-10
-     -  student   manhattan() = 410
-     -  reference manhattan() = 613
+     -  student   manhattan() = 657
+     -  reference manhattan() = 660
         10
-        23 44 32 14 29 63 47 83 46 99
-        13 34 43 60 65 51  8 35 20  2
-        17 53 27 69 55  4 54  9 70 15
-        48 66 24 96  0 25 45 72 31 93
-         7 91 22 67 38 57 37 19 95 98
-        62 89 50 41 78 33 71 86 92 40
-        61  1 77  5 10 79 39 85 90 94
-        36 87 75 82 12 59 11 56 26 76
-        80 84 16 42 73 49 28 97  6 81
-        88 64 58 74 68 18 30 52  3 21
+        25 39 35 98  0 83 66 33 20 50
+        99 61 55 27 87 84 68 21 28  4
+        70 52 18 43 86 57 51 24 12 79
+        56 22 46 91 44 63  9 73 26 62
+        40 38 23 54  7 13 67 82 34 96
+        89 93 95 72 17 31 37 47 75  8
+        94 97 29 71 49 81 48  1 59 30
+        92  5 88 76  6  3 58 41 11 19
+        74 42 85 53 36 60 78 15 65 14
+        10 45 80 90  2 16 69 77 64 32
 
      -  Failed on trial 1 of 1000
 
   *  127-by-127
-     -  student   manhattan() = 955936
-     -  reference manhattan() = 1372828
+     -  student   manhattan() = 1373322
+     -  reference manhattan() = 1373324
      -  Failed on trial 1 of 10
 
 ==> FAILED
@@ -291,116 +281,21 @@ Test 6b: Test neighbors() of neighbors() with random N-by-N boards
 
 Test 7a: Test twin() with file inputs
   *  puzzle04.txt
-     -  twin() doesn't return a twin
-        3
-         0  3  1
-         2  5  4
-         8  6  7
-
   *  puzzle00.txt
-     -  twin() doesn't return a twin
-        10
-         2  3  4  5  6  7  8  9 10  1
-        12 13 14 15 16 17 18 19 20 11
-        22 23 24 25 26 27 28 29 30 21
-        32 33 34 35 36 37 38 39 40 31
-        42 43 44 45 46 47 48 49 50 41
-        52 53 54 55 56 57 58 59 60 51
-        62 63 64 65 66 67 68 69 70 61
-        72 73 74 75 76 77 78 79 80 71
-        82 83 84 85 86 87 88 89 90 81
-        92 93 94 95 96 97 98 99 91  0
-
   *  puzzle06.txt
-     -  twin() doesn't return a twin
-        4
-         0  2  3  1
-         6  7  4  5
-        10 11  8  9
-        14 15 12 13
-
   *  puzzle09.txt
-     -  twin() doesn't return a twin
-        4
-         2  0  4  3
-        10  6  8  1
-         9  7 12  5
-        14 11 15 13
-
   *  puzzle23.txt
-     -  twin() doesn't return a twin
-        3
-         5  0  4
-         3  8  2
-         1  6  7
-
   *  puzzle2x2-unsolvable1.txt
-==> FAILED
+==> passed
 
 Test 7b: Test twin() with random N-by-N boards
   *  2-by-2
   *  3-by-3
-     -  twin() doesn't return a twin
-        3
-         3  8  1
-         7  4  5
-         0  2  6
-
-     -  Failed on trial 1 of 1000
-
   *  4-by-4
-     -  twin() doesn't return a twin
-        4
-         9 12 13  4
-        11  3 14  0
-         7  2 10  5
-         1  6  8 15
-
-     -  Failed on trial 1 of 1000
-
   *  5-by-5
-     -  twin() doesn't return a twin
-        5
-         1  3 14  4 13
-        20 17  9 22  5
-         6 11 12 16 15
-         7 10 23  0 21
-        24 18  2  8 19
-
-     -  Failed on trial 1 of 1000
-
   *  9-by-9
-     -  twin() doesn't return a twin
-        9
-        21 56 15 43 63 72 26 70 11
-        50 46 65 32 38 29 18 48  9
-        17 69  1 54 62 33 51 47 20
-        73 68 34 75 30  6 78 80 23
-        16  0 64  8 58 74 77 49  5
-        55  3 35 42 44 60 39 37  2
-        79 53 67 24 52 45 25 66  4
-        22 31 10 27 14 59 28  7 12
-        13 19 61 71 76 41 57 36 40
-
-     -  Failed on trial 1 of 100
-
   *  10-by-10
-     -  twin() doesn't return a twin
-        10
-        70 85 90 30 42 64 18 24 56 87
-        20  8 60 53  6 44  5 84 58 97
-        16 27 74 46  7 12 93 25 54 78
-        37 86 72 80 43 75 99 98 28 13
-        79  9 15 63 47 29 33 32 83 55
-        52  1 96 41 68 51 38 89 88 71
-         2 81 62 19 21 66 91 31 73 59
-        22 14 76 11 23 35 48  3 95  4
-        39 65 61 45 82 10 40  0 67 77
-        57 94 34 17 49 92 36 69 26 50
-
-     -  Failed on trial 1 of 10
-
-==> FAILED
+==> passed
 
 Test 8a: Test isGoal() on file inputs
   *  puzzle00.txt
@@ -475,39 +370,11 @@ Test 13: Call hamming() on a board that is kth-neighbor of a board
 
 Test 14: Call manhattan() on a board that is a kth-neighbor of a board
   * 0th neighbor of puzzle27.txt
-     -  student   manhattan() = 11
-     -  reference manhattan() = 17
-        3
-         5  8  7
-         1  4  6
-         3  0  2
-
   * 1th neighbor of puzzle27.txt
-     -  student   manhattan() = 10
-     -  reference manhattan() = 16
-        3
-         5  8  7
-         1  4  6
-         3  2  0
-
   * 2th neighbor of puzzle27.txt
-     -  student   manhattan() = 13
-     -  reference manhattan() = 19
-        3
-         5  8  7
-         1  6  0
-         3  4  2
-
   * 13th neighbor of puzzle27.txt
-     -  student   manhattan() = 10
-     -  reference manhattan() = 16
-        3
-         0  5  7
-         1  8  6
-         3  4  2
-
   * 13th neighbor of puzzle00.txt
-     -  student   manhattan() = 10
+     -  student   manhattan() = 14
      -  reference manhattan() = 5
         10
          1  2  3  4  5  6  7  8  9 10
@@ -517,21 +384,21 @@ Test 14: Call manhattan() on a board that is a kth-neighbor of a board
         41 42 43 44 45 46 47 48 49 50
         51 52 53 54 55 56 57 58 59 60
         61 62 63 64 65 66 67 68 69 70
-        71 72 73 74 75 76 77 78 80 89
-        81 82 83 84 85 86 87 88 79  0
-        91 92 93 94 95 96 97 98 99 90
+        71 72 73 74 75 76 77 78 79 80
+        81 82 83 84 85 86 97 87 89 90
+        91 92 93 94 95 96 88 98  0 99
 
   * 13th neighbor of puzzle2x2-unsolvable1.txt
-     -  student   manhattan() = 1
-     -  reference manhattan() = 4
+     -  student   manhattan() = 3
+     -  reference manhattan() = 2
         2
-         0  3
-         1  2
+         3  2
+         1  0
 
 ==> FAILED
 
 
-Total: 17/22 tests passed!
+Total: 19/22 tests passed!
 
 
 ================================================================
@@ -872,15 +739,15 @@ Computing memory of Solver
 Running 3 total tests.
 
 Test 1: memory with puzzle20.txt (must be <= 2.0x reference solution)
-  - memory of student   Solver = 216 bytes
+  - memory of student   Solver = 4544 bytes
   - memory of reference Solver = 4896 bytes
-  - student / reference        = 0.04
+  - student / reference        = 0.93
 ==> passed
 
 Test 2: memory with puzzle25.txt (must be <= 2.0x reference solution)
-  - memory of student   Solver = 216 bytes
+  - memory of student   Solver = 5544 bytes
   - memory of reference Solver = 6056 bytes
-  - student / reference        = 0.04
+  - student / reference        = 0.92
 ==> passed
 
 Test 3: memory with puzzle30.txt (must be <= 2.0x reference solution)
@@ -909,18 +776,21 @@ Maximum time allowed per puzzle is 10 seconds.
 
                filename   N    seconds    insert()            delMin()         max PQ size
 ---------------------------------------------------------------------------------------------
-=> FAILED  puzzle20.txt   3     0.10      42902   (8.2x)      25260   (8.1x)      17644   (8.3x)
-=> passed  puzzle21.txt   3     0.03      17179               10100                7081
-=> FAILED  puzzle22.txt   3     0.06      47561   (3.5x)      28006   (3.5x)      19557   (3.5x)
-=> passed  puzzle23.txt   3     0.02      16453                9658                6797
-=> passed  puzzle24.txt   3     0.03      25358               14958               10402
-=> FAILED  puzzle25.txt   3     0.14     112199   (1.9x)      66048   (1.9x)      46153   (1.9x)
-=> FAILED  puzzle26.txt   3     0.20     249830   (4.9x)     146520   (4.9x)     103312   (5.0x)
-=> FAILED  puzzle27.txt   3     0.10     129759   (1.5x)      75770   (1.4x)      53991   (1.6x)
-=> FAILED  puzzle28.txt   3     0.08     106972               62832               44142   (1.1x)
-=> FAILED  puzzle29.txt   3     0.26     229719   (2.8x)     136100   (2.7x)      93621   (2.9x)
-=> FAILED  puzzle30.txt   3     2.14    2309548  (10.9x)    1351708  (10.5x)     957842  (11.4x)
-=> FAILED  puzzle31.txt   3     0.29     373306   (1.7x)     220352   (1.6x)     152956   (1.7x)
+=> passed  puzzle20.txt   3     0.02       3655                2190                1467
+=> passed  puzzle21.txt   3     0.02       9263                5414                3851
+=> passed  puzzle22.txt   3     0.02       6616                3914                2704
+=> passed  puzzle23.txt   3     0.03      13443                7978                5467
+=> passed  puzzle24.txt   3     0.02      15404                9180                6226
+=> passed  puzzle25.txt   3     0.03      24312               14458                9856
+=> passed  puzzle26.txt   3     0.04      26129               15700               10431
+=> passed  puzzle27.txt   3     0.07      47057               28202               18857
+=> passed  puzzle28.txt   3     0.14     102314               61030               41286
+=> passed  puzzle29.txt   3     0.05      53425               32472               20955
+=> passed  puzzle30.txt   3     0.18     198039              119030               79011
+=> passed  puzzle31.txt   3     0.16     188058              113916               74144
+=> passed  puzzle34.txt   4     1.15     936924              446910              490016
+=> FAILED  puzzle37.txt   4     3.16    2548282   (2.6x)    1239488   (2.6x)    1308796   (2.6x)
+=> passed  puzzle39.txt   4     0.65     811853              392464              419391
 
 Total: 0/17 tests passed: Could not complete tests in allotted time, which results in a reported score of 0.
 ================================================================
