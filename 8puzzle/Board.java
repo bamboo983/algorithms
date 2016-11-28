@@ -39,7 +39,7 @@ public class Board {
                 if (tiles[i][j] != 0) {
                     int row = tiles[i][j] / n;
                     int col = (tiles[i][j] + n - 1) % n;
-                    distance += Math.abs((row - i) + (col - j));
+                    distance += Math.abs(row - i) + Math.abs(col - j);
                 }
             }
         return distance;
