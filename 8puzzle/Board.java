@@ -57,8 +57,10 @@ public class Board {
         // swap the first non-zero tile with its adjacency at the same row
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n - 1; j++)
-                if (tiles[i][j] != BLANK && tiles[i][j + 1] != 0)
+                if (tiles[i][j] != BLANK && tiles[i][j + 1] != 0) {
                     board.swap(i, j, i, j + 1);
+                    return board;
+                }
         }
         return board;
     }
