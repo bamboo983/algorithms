@@ -3,41 +3,39 @@ See the Assessment Guide for information on how to interpret this report.
 Assessment Summary
 
 Compilation:  PASSED
-Style:        PASSED
-Findbugs:     No potential bugs found.
+Checkstyle:   PASSED
+Findbugs:     PASSED
 API:          PASSED
 
-Correctness:  39/42 tests passed
+Correctness:  42/42 tests passed
 Memory:       11/11 tests passed
-Timing:       0/17 tests passed
+Timing:       17/17 tests passed
 
-Aggregate score: 70.36% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
+Aggregate score: 100.00% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
 
 Assessment Details
 
 The following files were submitted:
 ----------------------------------
 total 20K
--rw-r--r-- 1 4.6K Nov 28 04:40 Board.java
--rw-r--r-- 1 4.4K Nov 28 04:40 Solver.java
--rw-r--r-- 1 2.8K Nov 28 04:40 studentSubmission.zip
+-rw-r--r-- 1 5.0K Nov 29 02:42 Board.java
+-rw-r--r-- 1 4.4K Nov 29 02:42 Solver.java
+-rw-r--r-- 1 2.9K Nov 29 02:42 studentSubmission.zip
 
 
 ********************************************************************************
-*          COMPILING                                                           *
+*  COMPILING                                                                   *
 ********************************************************************************
 
 
 % javac Board.java
 *-----------------------------------------------------------
 
-================================================================
-
 % javac Solver.java
 *-----------------------------------------------------------
 
-================================================================
 
+================================================================
 
 
 % checkstyle *.java
@@ -93,128 +91,21 @@ Test 1b: Test hamming() with random N-by-N boards
 Test 2a: Test manhattan() with file inputs
   *  puzzle04.txt
   *  puzzle00.txt
-     -  student   manhattan() = 9
-     -  reference manhattan() = 0
-        10
-         1  2  3  4  5  6  7  8  9 10
-        11 12 13 14 15 16 17 18 19 20
-        21 22 23 24 25 26 27 28 29 30
-        31 32 33 34 35 36 37 38 39 40
-        41 42 43 44 45 46 47 48 49 50
-        51 52 53 54 55 56 57 58 59 60
-        61 62 63 64 65 66 67 68 69 70
-        71 72 73 74 75 76 77 78 79 80
-        81 82 83 84 85 86 87 88 89 90
-        91 92 93 94 95 96 97 98 99  0
-
   *  puzzle07.txt
-     -  student   manhattan() = 9
-     -  reference manhattan() = 7
-        3
-         1  2  3
-         0  7  6
-         5  4  8
-
   *  puzzle17.txt
-     -  student   manhattan() = 11
-     -  reference manhattan() = 13
-        3
-         5  1  8
-         2  7  3
-         4  0  6
-
   *  puzzle27.txt
   *  puzzle2x2-unsolvable1.txt
-     -  student   manhattan() = 2
-     -  reference manhattan() = 3
-        2
-         1  0
-         2  3
-
-==> FAILED
+==> passed
 
 Test 2b: Test manhattan() with random N-by-N boards
   *  2-by-2
-     -  student   manhattan() = 2
-     -  reference manhattan() = 1
-        2
-         1  2
-         0  3
-
-     -  Failed on trial 1 of 1000
-
   *  3-by-3
-     -  student   manhattan() = 14
-     -  reference manhattan() = 16
-        3
-         7  5  4
-         1  3  8
-         6  2  0
-
-     -  Failed on trial 1 of 1000
-
   *  4-by-4
-     -  student   manhattan() = 44
-     -  reference manhattan() = 43
-        4
-         8 11 14  9
-         0  3  7 15
-        13  4 10 12
-         2  6  5  1
-
-     -  Failed on trial 1 of 1000
-
   *  5-by-5
-     -  student   manhattan() = 79
-     -  reference manhattan() = 77
-        5
-         9  2 19 18 24
-        10 20  0  7 17
-        15  1 16  4 11
-        23 22  3  5 12
-        21  6  8 14 13
-
-     -  Failed on trial 1 of 1000
-
   *  9-by-9
-     -  student   manhattan() = 482
-     -  reference manhattan() = 480
-        9
-        22 21 52 28 36 19 16 66 34
-        51 45  1 26 72 31 10 80 79
-        58 53 11 75 70 61  5 27 59
-        32 73 40 71 67  8 12 65 57
-        29 24 39 76 54 14 68 43 20
-        48  0 37 15 41 38 30 47  6
-        33  9 35 46 50 23 62 78 64
-        60 44 74  7 69 77 56 13 42
-        25  3  2 63 49 18  4 17 55
-
-     -  Failed on trial 1 of 1000
-
   *  10-by-10
-     -  student   manhattan() = 657
-     -  reference manhattan() = 660
-        10
-        25 39 35 98  0 83 66 33 20 50
-        99 61 55 27 87 84 68 21 28  4
-        70 52 18 43 86 57 51 24 12 79
-        56 22 46 91 44 63  9 73 26 62
-        40 38 23 54  7 13 67 82 34 96
-        89 93 95 72 17 31 37 47 75  8
-        94 97 29 71 49 81 48  1 59 30
-        92  5 88 76  6  3 58 41 11 19
-        74 42 85 53 36 60 78 15 65 14
-        10 45 80 90  2 16 69 77 64 32
-
-     -  Failed on trial 1 of 1000
-
   *  127-by-127
-     -  student   manhattan() = 1373322
-     -  reference manhattan() = 1373324
-     -  Failed on trial 1 of 10
-
-==> FAILED
+==> passed
 
 Test 3: Test dimension() with random N-by-N boards
   *  2-by-2
@@ -374,31 +265,11 @@ Test 14: Call manhattan() on a board that is a kth-neighbor of a board
   * 2th neighbor of puzzle27.txt
   * 13th neighbor of puzzle27.txt
   * 13th neighbor of puzzle00.txt
-     -  student   manhattan() = 14
-     -  reference manhattan() = 5
-        10
-         1  2  3  4  5  6  7  8  9 10
-        11 12 13 14 15 16 17 18 19 20
-        21 22 23 24 25 26 27 28 29 30
-        31 32 33 34 35 36 37 38 39 40
-        41 42 43 44 45 46 47 48 49 50
-        51 52 53 54 55 56 57 58 59 60
-        61 62 63 64 65 66 67 68 69 70
-        71 72 73 74 75 76 77 78 79 80
-        81 82 83 84 85 86 97 87 89 90
-        91 92 93 94 95 96 88 98  0 99
-
   * 13th neighbor of puzzle2x2-unsolvable1.txt
-     -  student   manhattan() = 3
-     -  reference manhattan() = 2
-        2
-         3  2
-         1  0
-
-==> FAILED
+==> passed
 
 
-Total: 19/22 tests passed!
+Total: 22/22 tests passed!
 
 
 ================================================================
@@ -715,19 +586,19 @@ Memory usage of an n-by-n board
 
               n       student (bytes)    reference (bytes)
 ----------------------------------------------------------
-=> passed     4           248                  240
-=> passed     8           568                  560
-=> passed    12          1016                 1008
-=> passed    16          1592                 1584
-=> passed    20          2296                 2288
-=> passed    36          6392                 6384
-=> passed    72         23096                23088
-=> passed   120         61496                61488
+=> passed     4           216                  240
+=> passed     8           440                  560
+=> passed    12           728                 1008
+=> passed    16          1080                 1584
+=> passed    20          1496                 2288
+=> passed    36          3800                 6384
+=> passed    72         12728                23088
+=> passed   120         32696                61488
 ==> 8/8 tests passed
 
 Total: 8/8 tests passed!
 
-Student   memory = 4.00 n^2 + 32.00 n + 56.00   (R^2 = 1.000)
+Student   memory = 2.00 n^2 + 32.00 n + 56.00   (R^2 = 1.000)
 Reference memory = 4.00 n^2 + 32.00 n + 48.00   (R^2 = 1.000)
 
 ================================================================
@@ -739,21 +610,21 @@ Computing memory of Solver
 Running 3 total tests.
 
 Test 1: memory with puzzle20.txt (must be <= 2.0x reference solution)
-  - memory of student   Solver = 4544 bytes
+  - memory of student   Solver = 4040 bytes
   - memory of reference Solver = 4896 bytes
-  - student / reference        = 0.93
+  - student / reference        = 0.83
 ==> passed
 
 Test 2: memory with puzzle25.txt (must be <= 2.0x reference solution)
-  - memory of student   Solver = 5544 bytes
+  - memory of student   Solver = 4920 bytes
   - memory of reference Solver = 6056 bytes
-  - student / reference        = 0.92
+  - student / reference        = 0.81
 ==> passed
 
 Test 3: memory with puzzle30.txt (must be <= 2.0x reference solution)
-  - memory of student   Solver = 6544 bytes
+  - memory of student   Solver = 5800 bytes
   - memory of reference Solver = 7216 bytes
-  - student / reference        = 0.91
+  - student / reference        = 0.80
 ==> passed
 
 
@@ -776,21 +647,25 @@ Maximum time allowed per puzzle is 10 seconds.
 
                filename   N    seconds    insert()            delMin()         max PQ size
 ---------------------------------------------------------------------------------------------
-=> passed  puzzle20.txt   3     0.02       3655                2190                1467
-=> passed  puzzle21.txt   3     0.02       9263                5414                3851
-=> passed  puzzle22.txt   3     0.02       6616                3914                2704
-=> passed  puzzle23.txt   3     0.03      13443                7978                5467
-=> passed  puzzle24.txt   3     0.02      15404                9180                6226
-=> passed  puzzle25.txt   3     0.03      24312               14458                9856
-=> passed  puzzle26.txt   3     0.04      26129               15700               10431
-=> passed  puzzle27.txt   3     0.07      47057               28202               18857
-=> passed  puzzle28.txt   3     0.14     102314               61030               41286
-=> passed  puzzle29.txt   3     0.05      53425               32472               20955
-=> passed  puzzle30.txt   3     0.18     198039              119030               79011
-=> passed  puzzle31.txt   3     0.16     188058              113916               74144
-=> passed  puzzle34.txt   4     1.15     936924              446910              490016
-=> FAILED  puzzle37.txt   4     3.16    2548282   (2.6x)    1239488   (2.6x)    1308796   (2.6x)
-=> passed  puzzle39.txt   4     0.65     811853              392464              419391
+=> passed  puzzle20.txt   3     0.02       1967                1178                 791
+=> passed  puzzle21.txt   3     0.01       2558                1504                1056
+=> passed  puzzle22.txt   3     0.01       3662                2180                1484
+=> passed  puzzle23.txt   3     0.02       6577                3910                2669
+=> passed  puzzle24.txt   3     0.01       2972                1776                1198
+=> passed  puzzle25.txt   3     0.03      11378                6728                4652
+=> passed  puzzle26.txt   3     0.02      10253                6074                4181
+=> passed  puzzle27.txt   3     0.03      13435                8148                5289
+=> passed  puzzle28.txt   3     0.04      22231               13272                8961
+=> passed  puzzle29.txt   3     0.05      24067               14472                9597
+=> passed  puzzle30.txt   3     0.09      43392               26272               17122
+=> passed  puzzle31.txt   3     0.07      43818               26596               17224
+=> passed  puzzle34.txt   4     0.37     302334              144710              157626
+=> passed  puzzle37.txt   4     0.36     292677              142274              150405
+=> passed  puzzle39.txt   4     0.08      69347               33476               35873
+=> passed  puzzle41.txt   5     0.11      67975               29198               38779
+=> passed  puzzle44.txt   5     0.41     231349              103242              128109
+==> 17/17 tests passed
 
-Total: 0/17 tests passed: Could not complete tests in allotted time, which results in a reported score of 0.
+Total: 17/17 tests passed!
+
 ================================================================
