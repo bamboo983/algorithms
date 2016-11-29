@@ -3,16 +3,16 @@ import java.util.Stack;
 public class Board {
     private static final int BLANK = 0;
     private int n;
-    private int[][] tiles;
+    private char[][] tiles;
 
     // construct a board from an n-by-n array of blocks
     // (where blocks[i][j] = block in row i, column j)
     public Board(int[][] blocks) {
         n = blocks.length;
-        tiles = new int[n][n];
+        tiles = new char[n][n];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
-                tiles[i][j] = blocks[i][j];
+                tiles[i][j] = (char) blocks[i][j];
     }
 
     // board dimension n
@@ -51,7 +51,7 @@ public class Board {
 
     // a board that is obtained by exchanging any pair of blocks
     public Board twin() {
-        Board board = new Board(tiles);
+        Board board = new Board(createTilesInt(tiles));
 
         // swap the first non-zero tile with its adjacency at the same row
         for (int i = 0; i < n; i++) {
@@ -92,25 +92,25 @@ public class Board {
         Stack<Board> neighbors = new Stack<Board>();
 
         // upper tile
-        Board board = new Board(tiles);
+        Board board = new Board(createTilesInt(tiles));
         boolean isNeighbor = board.swap(index.row, index.col, index.row - 1, index.col);
         if (isNeighbor)
             neighbors.push(board);
 
         // right tile
-        board = new Board(tiles);
+        board = new Board(createTilesInt(tiles));
         isNeighbor = board.swap(index.row, index.col, index.row, index.col + 1);
         if (isNeighbor)
             neighbors.push(board);
 
         // down tile
-        board = new Board(tiles);
+        board = new Board(createTilesInt(tiles));
         isNeighbor = board.swap(index.row, index.col, index.row + 1, index.col);
         if (isNeighbor)
             neighbors.push(board);
 
         // left tile
-        board = new Board(tiles);
+        board = new Board(createTilesInt(tiles));
         isNeighbor = board.swap(index.row, index.col, index.row, index.col - 1);
         if (isNeighbor)
             neighbors.push(board);
@@ -124,7 +124,7 @@ public class Board {
         s.append(n + "\n");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                s.append(String.format("%2d ", tiles[i][j]));
+                s.append(String.format("%2d ", (int) tiles[i][j]));
             }
             s.append("\n");
         }
@@ -139,7 +139,7 @@ public class Board {
         if (dstRow < 0 || dstRow >= n || dstCol < 0 || dstCol >= n)
             return false;
 
-        int tmp = tiles[srcRow][srcCol];
+        char tmp = tiles[srcRow][srcCol];
         tiles[srcRow][srcCol] = tiles[dstRow][dstCol];
         tiles[dstRow][dstCol] = tmp;
         return true;
@@ -161,5 +161,13 @@ public class Board {
             this.row = row;
             this.col = col;
         }
+    }
+
+    private int[][] createTilesInt(char[][] t) {
+        int[][] tilesInt = new int[n][n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                tilesInt[i][j] = (int) t[i][j];
+        return tilesInt;
     }
 }
