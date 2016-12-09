@@ -7,20 +7,20 @@ Checkstyle:   PASSED
 Findbugs:     PASSED
 API:          PASSED
 
-Correctness:  26/27 tests passed
+Correctness:  27/27 tests passed
 Memory:       8/8 tests passed
 Timing:       42/42 tests passed
 
-Aggregate score: 97.59% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
+Aggregate score: 100.00% [Correctness: 65%, Memory: 10%, Timing: 25%, Style: 0%]
 
 Assessment Details
 
 The following files were submitted:
 ----------------------------------
 total 16K
--rw-r--r-- 1 4.9K Dec  9 08:48 KdTree.java
--rw-r--r-- 1 1.9K Dec  9 08:48 PointSET.java
--rw-r--r-- 1 2.2K Dec  9 08:48 studentSubmission.zip
+-rw-r--r-- 1 4.9K Dec  9 09:00 KdTree.java
+-rw-r--r-- 1 1.9K Dec  9 09:00 PointSET.java
+-rw-r--r-- 1 2.2K Dec  9 09:00 studentSubmission.zip
 
 
 ********************************************************************************
@@ -345,34 +345,12 @@ Test 8: Intermixed sequence of calls to insert(), isEmpty(), size(),
      and probabilities [0.0, 0.2, 0.2, 0.0, 0.6, 0.0]
   *  1000 calls with no points in a 1000-by-1000 grid
      and probabilities [0.0, 0.2, 0.2, 0.0, 0.0, 0.6]
-     java.lang.NullPointerException
-
-     KdTree$Node.access$000(KdTree.java:10)
-     KdTree.nearest(KdTree.java:68)
-     TestKdTree.testAll(TestKdTree.java:716)
-     TestKdTree.test8(TestKdTree.java:820)
-     TestKdTree.main(TestKdTree.java:905)
-
-     -  sequence of dequeue operations was:
-           set.nearest((0.264, 0.055))
   *  1000 calls with no points in a 1000-by-1000 grid
      and probabilities [0.0, 0.2, 0.2, 0.2, 0.2, 0.2]
-     java.lang.NullPointerException
-
-     KdTree$Node.access$000(KdTree.java:10)
-     KdTree.nearest(KdTree.java:68)
-     TestKdTree.testAll(TestKdTree.java:716)
-     TestKdTree.test8(TestKdTree.java:821)
-     TestKdTree.main(TestKdTree.java:905)
-
-     -  sequence of dequeue operations was:
-           set.contains((0.517, 0.156))  ==>  false
-           set.contains((0.588, 0.246))  ==>  false
-           set.nearest((0.718, 0.602))
-==> FAILED
+==> passed
 
 
-Total: 18/19 tests passed!
+Total: 19/19 tests passed!
 
 
 ================================================================
@@ -435,38 +413,38 @@ Inserting n points into a PointSET
 
                n      ops per second
 ----------------------------------------
-=> passed   160000    1438619
-=> passed   320000    1309556
-=> passed   640000    1124691
-=> passed  1280000     950139
+=> passed   160000    1723535
+=> passed   320000    1825936
+=> passed   640000    1529519
+=> passed  1280000    1240237
 ==> 4/4 tests passed
 
 Performing contains() queries after inserting n points into a PointSET
 
                n      ops per second
 ----------------------------------------
-=> passed   160000     455047
-=> passed   320000     407274
-=> passed   640000     371192
-=> passed  1280000     342444
+=> passed   160000     511422
+=> passed   320000     495064
+=> passed   640000     443046
+=> passed  1280000     394364
 ==> 4/4 tests passed
 
 Performing range() queries after inserting n points into a PointSET
 
                n      ops per second
 ----------------------------------------
-=> passed    10000       3862
-=> passed    20000       1827
-=> passed    40000       1084
+=> passed    10000       3883
+=> passed    20000       1852
+=> passed    40000        852
 ==> 3/3 tests passed
 
 Performing nearest() queries after inserting n points into a PointSET
 
                n      ops per second
 ----------------------------------------
-=> passed    10000       4637
-=> passed    20000       2194
-=> passed    40000        971
+=> passed    10000       4679
+=> passed    20000       2200
+=> passed    40000        977
 ==> 3/3 tests passed
 
 Total: 14/14 tests passed!
@@ -486,10 +464,10 @@ in RectHV and Point per call to insert().
                                                                                                 Point2D
                n      ops per second       RectHV()           x()               y()             equals()
 ----------------------------------------------------------------------------------------------------------------
-=> passed   160000     590765               1.0              33.2              31.7              21.6
-=> passed   320000     580442               1.0              33.8              32.3              22.0
-=> passed   640000     780597               1.0              36.1              34.6              23.5
-=> passed  1280000     802149               1.0              39.2              37.7              25.6
+=> passed   160000    1095958               1.0              33.2              31.7              21.6
+=> passed   320000    1157534               1.0              33.8              32.3              22.0
+=> passed   640000    1192431               1.0              36.1              34.6              23.5
+=> passed  1280000     967391               1.0              39.2              37.7              25.6
 ==> 4/4 tests passed
 
 Performing contains() queries after inserting n points into a 2d tree. The table gives
@@ -498,14 +476,14 @@ the average number of calls to methods in RectHV and Point per call to contain()
                                                                                Point2D
                n      ops per second       x()               y()               equals()
 -----------------------------------------------------------------------------------------------
-=> passed    10000     511434              18.5              17.5              18.0
-=> passed    20000     513566              19.7              18.7              19.2
-=> passed    40000     470098              21.8              20.8              21.3
-=> passed    80000     431996              22.0              21.0              21.5
-=> passed   160000     380590              23.2              22.2              22.7
-=> passed   320000     346617              25.0              24.0              24.5
-=> passed   640000     320745              25.7              24.7              25.2
-=> passed  1280000     309654              27.2              26.2              26.7
+=> passed    10000     535882              18.5              17.5              18.0
+=> passed    20000     552198              19.7              18.7              19.2
+=> passed    40000     511458              21.8              20.8              21.3
+=> passed    80000     506148              22.0              21.0              21.5
+=> passed   160000     461066              23.2              22.2              22.7
+=> passed   320000     418599              25.0              24.0              24.5
+=> passed   640000     383542              25.7              24.7              25.2
+=> passed  1280000     338117              27.2              26.2              26.7
 ==> 8/8 tests passed
 
 Performing range() queries after inserting n points into a 2d tree. The table gives
@@ -513,14 +491,14 @@ the average number of calls to methods in RectHV and Point per call to range().
 
                n      ops per second       intersects()      contains()        x()               y()
 ---------------------------------------------------------------------------------------------------------------
-=> passed    10000     355112              50.4              50.4              79.2              14.7
-=> passed    20000     317179              52.7              52.7              84.9              20.1
-=> passed    40000     270388              64.9              64.9             102.4              17.4
-=> passed    80000     220307              67.1              67.1             106.4              18.5
-=> passed   160000     188433              70.0              70.0             115.0              25.9
-=> passed   320000     174326              67.0              67.0             106.6              19.6
-=> passed   640000     145475              72.0              72.0             115.3              24.1
-=> passed  1280000     182056              78.7              78.7             123.1              17.5
+=> passed    10000     359354              50.4              50.4              79.2              14.7
+=> passed    20000     333226              52.7              52.7              84.9              20.1
+=> passed    40000     303241              64.9              64.9             102.4              17.4
+=> passed    80000     284081              67.1              67.1             106.4              18.5
+=> passed   160000     252715              70.0              70.0             115.0              25.9
+=> passed   320000     206093              67.0              67.0             106.6              19.6
+=> passed   640000     167507              72.0              72.0             115.3              24.1
+=> passed  1280000     207095              78.7              78.7             123.1              17.5
 ==> 8/8 tests passed
 
 Performing nearest() queries after inserting n points into a 2d tree. The table gives
@@ -529,14 +507,14 @@ the average number of calls to methods in RectHV and Point per call to nearest()
                                          Point2D                 RectHV
                n      ops per second     distanceSquaredTo()     distanceSquaredTo()        x()               y()
 ------------------------------------------------------------------------------------------------------------------------
-=> passed    10000   312224                 124.5                   41.5                   115.5             114.1
-=> passed    20000   287596                 137.5                   45.8                   127.1             126.0
-=> passed    40000   231430                 162.3                   54.1                   151.0             148.4
-=> passed    80000   190559                 166.3                   55.4                   152.5             152.9
-=> passed   160000   155297                 180.9                   60.3                   167.2             166.1
-=> passed   320000   135631                 189.4                   63.1                   174.3             173.1
-=> passed   640000   118962                 196.1                   65.4                   180.1             179.7
-=> passed  1280000   103419                 220.3                   73.4                   202.7             200.4
+=> passed    10000   321286                 124.5                   41.5                   115.5             114.1
+=> passed    20000   310587                 137.5                   45.8                   127.1             126.0
+=> passed    40000   275061                 162.3                   54.1                   151.0             148.4
+=> passed    80000   261347                 166.3                   55.4                   152.5             152.9
+=> passed   160000   230265                 180.9                   60.3                   167.2             166.1
+=> passed   320000   174280                 189.4                   63.1                   174.3             173.1
+=> passed   640000   144107                 196.1                   65.4                   180.1             179.7
+=> passed  1280000   120462                 220.3                   73.4                   202.7             200.4
 ==> 8/8 tests passed
 
 Total: 28/28 tests passed!
